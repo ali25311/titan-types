@@ -38,31 +38,37 @@
         <!-- Primary site content -->
         <div class="test-container">
             <div class="stats-container">
-                <h2 class="time">Time</h2>
-                <h3>1:00</h3>
-                <h2 class="speed">Speed(WPM)</h2>
-                <h3>55</h3>
-                <h2 class="accuracy">Accuracy</h2>
+                <div class="module">
+                    <h2 class="time">Time</h2>
+                    <h3>1:00</h3>
+                </div>
+                <div class="module">
+                    <h2 class="speed">Speed(WPM)</h2>
+                    <h3>55</h3>
+                </div>
+                <div class="module">
+                    <h2 class="accuracy">Accuracy</h2>
                 <h3>95%</h3>
+                </div>
             </div>
             <div class="quote-container">
                 <p class="quote-display" id="generated-quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="settings-container">
                 <div class="duration-dropdown">
-                    <span>Duration Options</span>
-                    <div class="dropdown-content">
-                        <p>15 seconds</p>
-                        <p>30 seconds</p>
-                        <p>60 seconds</p>
+                    <button onclick="myDurationDropdown()" class="dropbtn">Duration</button>
+                    <div id="myDurationDropdown" class="dropdown-content">
+                        <a href="#">15 seconds</a>
+                        <a href="#">30 seconds</a>
+                        <a href="#">60 seconds</a>
                     </div>
                 </div>
                 <div class="type-dropdown">
-                    <span>Test Type</span>
-                    <div class="dropdown-content">
-                        <p>Quotes</p>
-                        <p>Short</p>
-                        <p>Random</p>
+                    <button onclick="myTypeDropdown()" class="dropbtn">Type</button>
+                    <div id="myTypeDropdown" class="dropdown-content">
+                        <a href="#">Quotes</a>
+                        <a href="#">Short</a>
+                        <a href="#">Random</a>
                     </div>
                 </div>
                 <h2 class="reset">Reset</h2>
