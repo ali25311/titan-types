@@ -5,6 +5,10 @@
     font-family: "Lora", serif;
 }
 
+body {
+    background-color:#2e6ca6;
+}
+
 header {
     background: #00274c;
     min-height: 5.5rem;
@@ -60,3 +64,56 @@ ul li:first-of-type {
 ul li:hover {
     color: #ff9c2b;
 }
+
+.test-container{
+    max-width: 1300px;
+    background-color: #00274c;
+    margin: 250px auto 0 auto;
+    line-height: 2;
+    padding: 50px 70px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.stats-container{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.module {
+    flex-direction: column;
+}
+
+h3 {
+    color: chocolate;
+}
+
+.quote-container {
+    background-color: rgb(255, 246, 220);
+}
+
+
+.settings-container{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-container {
+    max-width: 1300px;
+    background-color: #00274c;
+    margin: 250px auto 0 auto;
+    line-height: 2;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+}
+
