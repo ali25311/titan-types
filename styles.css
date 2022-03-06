@@ -1,119 +1,275 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+/* Start of Stephen's CSS for root/nav/header */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Lora", serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Lora", serif;
 }
 
 body {
-    background-color:#2e6ca6;
+  background-color: #00274c;
+  background-image: url("assets/background-1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 header {
-    background: #00274c;
-    min-height: 5.5rem;
-    max-height: 5.5rem;
-    width: 100%;
-    padding: 0.15em 0;
-    margin-bottom: 3em;
+  background: #00274c;
+  min-height: 7.5rem;
+  max-height: 7.5rem;
+  width: 100%;
+  padding: 0.15em 0;
+  margin-bottom: 3em;
 }
 
 .heading-content-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    color: white;
-    width: 90%;
-    margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  width: 90%;
+  margin: auto;
 }
 
 .logo-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .logo-img {
-    max-width: 5rem;
-    max-height: 5rem;
+  max-width: 7rem;
+  max-height: 7rem;
 }
 
 .logo-text {
-    font-weight: 600;
-    font-size: 2.4rem;
-    letter-spacing: 0.01em;
+  font-weight: 600;
+  font-size: 3.4rem;
+  letter-spacing: 0.01em;
 }
 
 nav ul {
-    display: flex;
-    flex-direction: row;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 ul li {
-    list-style: none;
-    font-size: 1.4rem;
-    cursor: pointer;
-    font-weight: 600;
+  list-style: none;
+  font-size: 2.4rem;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 ul li:first-of-type {
-    margin-right: 0.75em;
+  margin-right: 0.75em;
 }
 
 ul li:hover {
-    color: #ff9c2b;
+  color: #ff9c2b;
+}
+/* End of Stephen's CSS for root/nav/header */
+
+li a {
+  text-decoration: none;
+  color: white;
 }
 
-.test-container{
-    max-width: 1300px;
-    background-color: #00274c;
-    margin: 250px auto 0 auto;
-    line-height: 2;
-    padding: 50px 70px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+li a:hover {
+  color: #ff9c2b;
 }
 
-.stats-container{
-    color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.current-page {
+  color: #ff9c2b;
+}
+
+.test-container {
+  max-width: 100%;
+  background-color: #00274c;
+  /* margin: 250px auto 0 auto; */
+  line-height: 2;
+  padding: 2em 2em;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  -ms-grid-columns: 15em 50px auto 50px 15em;
+  grid-template-columns: 15em auto 15em;
+  /* grid-template-columns: repeat(3, 1fr); */
+  -webkit-column-gap: 50px;
+  -moz-column-gap: 50px;
+  column-gap: 50px;
+  /* grid-auto-rows: minmax(100px, auto); */
+  /* grid-template-rows: 4px 4em 40px;
+  grid-template-rows: auto; */
+}
+
+.stats-container {
+  background-color: rgba(14, 147, 224, 0.144);
+  text-align: right;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
 }
 
 .module {
-    flex-direction: column;
+  /* flex-direction: column; */
 }
 
 h3 {
-    color: chocolate;
+  text-align: center;
+  color: chocolate;
+  font-size: 2rem;
 }
 
 .quote-container {
-    background-color: rgb(255, 246, 220);
+  background-color: rgba(14, 147, 224, 0.144);
+  padding: 1em;
+  color: #ff9c2b;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
 }
 
-
-.settings-container{
-    color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.settings-container {
+  font-size: 1.5rem;
+  background-color: rgba(14, 147, 224, 0.144);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .about-container {
-    max-width: 1300px;
-    background-color: #00274c;
-    margin: 250px auto 0 auto;
-    line-height: 2;
-    padding: 20px 20px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    color: white;
+  padding: 1em;
+  font-size: 1.5rem;
+  max-width: 100%;
+  background-color: #00274c;
+  line-height: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
 }
 
+.about {
+  border: medium solid #ff8800;
+  padding: 1em;
+}
+
+.github-body-container {
+  margin: 1em;
+  padding: 1em;
+  border: medium solid #ff8800;
+}
+
+.about-heading,
+.github-heading {
+  color: #ff8800;
+}
+
+select {
+  background-color: #00274c4d;
+  color: #ff8800;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+.reset-button {
+  background-color: #ffffff00;
+  border: none;
+  color: #ffffff;
+  /* padding: 22px 22px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 3.1rem;
+}
+
+.reset-button:hover {
+  color: #ff8800;
+  cursor: pointer;
+}
+
+.learn-more a {
+  text-decoration: none;
+  color: white;
+}
+
+.learn-more a:hover {
+  color: #ff8800;
+}

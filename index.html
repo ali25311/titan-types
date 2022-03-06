@@ -1,90 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-        <!-- Google Font Imports -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
-        <title>TitanTypes</title>
-    </head>
-    <body>
-        <header>
-            <div class="heading-content-container">
-                <div class="logo-wrapper">
-                    <div class="img-wrapper">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CSUF_Titans_Logo.svg/1200px-CSUF_Titans_Logo.svg.png" class="logo-img"/> <!-- Dummy image for now -->
-                    </div>
-                    <h1 class="logo-text">TitanTypes</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="index.html" class="current-page">Home</a>
-                        </li>
-                        <li>
-                            <a href="info.html">About</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        
-
+    <!-- Google Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
+    <title>TitanTypes</title>
+  </head>
+  <body>
+    <header>
+      <div class="heading-content-container">
+        <div class="logo-wrapper">
+          <div class="img-wrapper">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CSUF_Titans_Logo.svg/1200px-CSUF_Titans_Logo.svg.png"
+              class="logo-img"
+            />
+            <!-- Dummy image for now -->
+          </div>
+          <h1 class="logo-text">TitanTypes</h1>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html" class="current-page">Home</a>
+            </li>
+            <li>
+              <a href="info.html">About</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <!-- Primary site content -->
     <main>
-        <div class="test-container">
-            <div class="stats-container">
-                <div class="module">
-                    <h2 class="time">Time</h2>
-                    <h3>1:00</h3>
-                </div>
-                <div class="module">
-                    <h2 class="speed">Speed(WPM)</h2>
-                    <h3>55</h3>
-                </div>
-                <div class="module">
-                    <h2 class="accuracy">Accuracy</h2>
-                    <h3>95%</h3>
-                </div>
-            </div>
-            <div class="quote-container">
-                <p class="quote-display" id="generated-quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="settings-container">
-                <div class="duration">
-                    <!-- <label for="duration">Duration:</label> -->
-                    <h2 class="duration">Duration</h2>
-                    <select name="duration" id="duration">
-                        <option value="15sec">15 seconds</option>
-                        <option value="30sec">30 seconds</option>
-                        <option value="60sec">60 seconds</option>
-                    </select>
-                    </div>
-                <div class="test-type">
-                    <!-- <label for="test-type">Type:</label> -->
-                    <h2 class="test-type">Type</h2>
-                    <select name="test-type" id="test-type">
-                        <option value="quote">Quotes</option>
-                        <option value="words">Words</option>
-                        <option value="random">Random</option>
-                    </select>
-                </div>
-                <div class="reset">
-                    <h2 class="reset">Reset</h2>
-                    <button onclick="restart()"><i class="fa fa-refresh"></i></button>
-                </div>
-            </div>
+      <div class="test-container">
+        <div class="stats-container">
+          <div class="module">
+            <h2 class="time">Time</h2>
+            <h3>1:00</h3>
+          </div>
+          <div class="module">
+            <h2 class="speed">Speed(WPM)</h2>
+            <h3>55</h3>
+          </div>
+          <div class="module">
+            <h2 class="accuracy">Accuracy</h2>
+            <h3>95%</h3>
+          </div>
+        </div>
+        <div class="quote-container">
+          <p class="quote-display" id="generated-quote">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+        <div class="settings-container">
+          <div class="duration">
+            <!-- <label for="duration">Duration:</label> -->
+            <h2 class="duration">Duration</h2>
+            <select name="duration" id="duration">
+              <option value="15sec">15 seconds</option>
+              <option value="30sec">30 seconds</option>
+              <option value="60sec">60 seconds</option>
+            </select>
+          </div>
+          <div class="test-type">
+            <!-- <label for="test-type">Type:</label> -->
+            <h2 class="test-type">Type</h2>
+            <select name="test-type" id="test-type">
+              <option value="quote">Quotes</option>
+              <option value="words">Words</option>
+              <option value="random">Random</option>
+            </select>
+          </div>
+          <div class="reset">
+            <h2 class="reset">Reset</h2>
+            <button class="reset-button" onclick="restart()">
+              <i class="fa fa-refresh"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
 
-
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+  </body>
 </html>
