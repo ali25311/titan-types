@@ -121,7 +121,8 @@ li a:hover {
 }
 
 .test-container {
-  max-width: 100%;
+  min-width: 95%;
+  max-width: 95%;
   background-color: #00274c;
   /* margin: 250px auto 0 auto; */
   line-height: 2;
