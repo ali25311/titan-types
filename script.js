@@ -2,6 +2,7 @@
 $(document).ready(function () {
     let wordCount = 0;
     let errorCount = 0;
+    let errorStreak = 0;
     let secondsPassed = 0;
     let secondsRemaining = 0;
     let Gross_wpm = 0;
@@ -49,15 +50,26 @@ $(document).ready(function () {
     $(document).on('keypress', function(key) {
         let charTyped = String.fromCharCode(key.keyCode);
 
-        if (charTyped == quote[currentIndex]) {
+        if (charTyped === quote[currentIndex]) {
+            errorStreak = 0;
+        }
+
+        if (quote[currentIndex + 1] === ' ' && (errorStreak < 2)) {
+                wordCount++;
+                console.log(wordCount);
+        }
+
+        if (charTyped === quote[currentIndex]) {
             updatePosition(1);
             currentIndex++;
         }
         else {
-            errorCount++;
-            updatePosition(0);
-            currentIndex++;
-            console.log(errorCount);
+            if (errorStreak < 2) {
+                updatePosition(0);
+                errorCount++;
+                currentIndex++;
+                errorStreak++;
+            }
         }
     });
 
@@ -66,14 +78,18 @@ $(document).ready(function () {
     $(document).on('keydown', function(key) {
         if (key.keyCode === 8) {
             if (currentIndex > 0) {
+                if (quote[currentIndex] == ' ') {
+                    wordCount--;
+                }
                 currentIndex--;
                 if ($("span").eq(currentIndex).css("background-color") === "rgb(255, 79, 31)") {
                     errorCount--;
-                    console.log(errorCount);
+                    if (errorStreak > 0) {
+                        errorStreak--;
+                    }
                 }
                 updatePosition(2);
             }
         }
     })
-
 });
