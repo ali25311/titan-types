@@ -273,3 +273,18 @@ select {
 .learn-more a:hover {
   color: #ff8800;
 }
+
+.blinking {
+  border-bottom: 0.15em solid #000000;
+  animation: blink 0.8s linear alternate infinite;
+}
+
+@keyframes blink {
+  from {
+    border-bottom: 0.15em solid #000000;
+  }
+
+  to {
+    border: transparent;
+  }
+}
