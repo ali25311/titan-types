@@ -172,7 +172,9 @@ h3 {
   padding: 1em;
   color: #ff9c2b;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem;
+  min-height: 25rem;
+  max-height: 25rem;
 }
 
 .settings-container {

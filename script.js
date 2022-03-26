@@ -1,3 +1,5 @@
+const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random?minLength=200&maxLength=250";
+
 // Main code here
 $(document).ready(function () {
   let wordCount = 0;
@@ -8,35 +10,81 @@ $(document).ready(function () {
   let Gross_wpm = 0;
   let Raw_wpm = 0;
   let AccuracyPercent = 0;
-  // let quote = "Hello there, this is a test! How are you today? I am doing quite well, how about yourself? I am doing good! Gilbert is a good pig who likes to eat parsley and ham and potatoes and to be a snug pig.";
   let currentIndex = 0;
   let quoteEl = $("#generated-quote");
-  var fetchedQuote = "";
-  var randomWords = require("random-words");
-  var fetchedWord = "";
+  let testContent = "";
 
-  //   Ali's probably really bad random words function (NPM)
-  function randomWord() {
-    fetchedWord = randomWords(1);
-    return fetchedWord;
-  }
+	async function getRandomQuote() {
+		return fetch(RANDOM_QUOTE_API_URL)
+			.then((response) => response.json())
+			.then((data) => data.content)
+			.then((quote) => {
+				let clean = cleanQuote(quote);
+				return clean;
+			});
+	}
 
-  //   Ali's probably really bad fetch random quotes from API function
-  function randomQuote() {
-    fetch("https://api.quotable.io/random")
-      .then((response) => response.json())
-      .then((data) => {
-        fetchedQuote = data.content;
-      });
-  }
+  async function cleanQuote(inputQuote) {
+		let quote = inputQuote
+		let cleanQuote = false;
+		let dirtyChar = false;
+		let cleanChar = false;
 
-  function generateQuote() {
-    for (let i = 0; i < quote.length; i++) {
-      let char = document.createElement("span");
-      char.innerText = quote[i];
-      quoteEl.append(char);
-    }
-  }
+		while (cleanQuote == false) {
+
+			var filteredQuote = quote;
+			filteredQuote = filteredQuote.split('');
+
+			for (let x = 0; x < filteredQuote.length; x++) {
+				if (filteredQuote[x].charCodeAt() < 126 && filteredQuote[x].charCodeAt() != 96 && filteredQuote[x].charCodeAt() != 95) {
+					cleanChar = true;
+				}
+				else {
+					quote = await getRandomQuote();
+					dirtyChar = true;
+					break;
+				}
+			}
+			if (cleanChar == true && dirtyChar == false) {
+				cleanQuote = true;
+
+			}
+			else {
+				dirtyChar = false;
+				cleanChar = false;
+			}
+		}
+		return quote;
+	}
+
+
+
+  async function renderQuotes() {
+    quoteEl.empty();
+    currentIndex = 0;
+		let quote1 = await getRandomQuote();
+    let quote2 = await getRandomQuote();
+
+    //record the length of the first quote
+		topQuoteLength = quote1.length;
+	
+		// record the length of the second quote
+		bottomQuoteLength = quote2.length;
+
+		// add a single  character in between them (so one of the quote lengths is actually wrong)
+		quote1 = quote1 + ' ' + quote2;
+    testContent = quote1;
+    testContent += " ";
+
+		quote1.split("").forEach((character) => {
+			// we can add an ASCII filter here
+			const characterSpan = document.createElement("span");
+			characterSpan.innerText = character;
+			//characterSpan.addClass("quoteChar")
+			quoteEl.append(characterSpan);
+		});
+	}
+
 
   function updatePosition(status) {
     let charEl = $("span").eq(currentIndex);
@@ -53,22 +101,22 @@ $(document).ready(function () {
     }
   }
 
-  generateQuote();
+
 
   // Keypress handling
   $(document).on("keypress", function (key) {
     let charTyped = String.fromCharCode(key.keyCode);
 
-    if (charTyped === quote[currentIndex]) {
+    if (charTyped === testContent[currentIndex]) {
       errorStreak = 0;
     }
 
-    if (quote[currentIndex + 1] === " " && errorStreak < 2) {
+    if (testContent[currentIndex + 1] === " " && errorStreak < 2) {
       wordCount++;
       console.log(wordCount);
     }
 
-    if (charTyped === quote[currentIndex]) {
+    if (charTyped === testContent[currentIndex]) {
       updatePosition(1);
       currentIndex++;
     } else {
@@ -79,13 +127,17 @@ $(document).ready(function () {
         errorStreak++;
       }
     }
+
+    if (currentIndex == testContent.length) {
+      renderQuotes();
+    }
   });
 
   // Backspace
   $(document).on("keydown", function (key) {
     if (key.keyCode === 8) {
       if (currentIndex > 0) {
-        if (quote[currentIndex] == " ") {
+        if (testContent[currentIndex] == " ") {
           wordCount--;
         }
         currentIndex--;
@@ -102,4 +154,9 @@ $(document).ready(function () {
       }
     }
   });
+
+
+
+
+  renderQuotes();
 });
