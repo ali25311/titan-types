@@ -109,7 +109,13 @@ $(document).ready(function () {
 
 
   function updatePosition(status) {
+    if (currentIndex > 0) {
+      let prevEl = $("span").eq(currentIndex - 1);
+      prevEl.removeClass("blinking");
+    }
+    
     let charEl = $("span").eq(currentIndex);
+    charEl.addClass("blinking");
 
     if (status === 0) {
       charEl.css("background-color", "#ff4f1f");
@@ -155,9 +161,11 @@ $(document).ready(function () {
     }
   });
 
+
   // Backspace
   $(document).on("keydown", function (key) {
     if (key.keyCode === 8) {
+      $("span").eq(currentIndex).removeClass("blinking");
       if (currentIndex > 0) {
         if (testContent[currentIndex] == " ") {
           wordCount--;
