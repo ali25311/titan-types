@@ -6,13 +6,18 @@ $(document).ready(function () {
   let wordCount = 0;
   let errorCount = 0;
   let errorStreak = 0;
+  let characterCount = 0;
   let secondsPassed = 0;
-  let secondsRemaining = 0;
+  let secondsRemaining = 60;
   let Gross_wpm = 0;
   let Raw_wpm = 0;
-  let AccuracyPercent = 0;
+  let accuracyPercent = 0;
   let currentIndex = 0;
   let quoteEl = $("#generated-quote");
+  let timerEl = $("#timer-val");
+  // let wpmEl = $("#wpm-val");
+  let wordCountEl = $("#word-count-val");
+  let accuracyEl = $("#accuracy-val");
   let testContent = "";
   let state = "words";
 
@@ -129,10 +134,19 @@ $(document).ready(function () {
     }
   }
 
+  let block = false;
 
 
   // Keypress handling
   $(document).on("keypress", function (key) {
+    		//updates counters on keypress
+		if (secondsRemaining > 0) TextCounter();
+    else {
+      return;
+    }
+		//starts timer
+		if (block == false) {startTimer(); block = true;}
+
     let charTyped = String.fromCharCode(key.keyCode);
 
     if (charTyped === testContent[currentIndex]) {
@@ -147,11 +161,13 @@ $(document).ready(function () {
     if (charTyped === testContent[currentIndex]) {
       updatePosition(1);
       currentIndex++;
+      characterCount++;
     } else {
       if (errorStreak < 2) {
         updatePosition(0);
         errorCount++;
         currentIndex++;
+        characterCount++;
         errorStreak++;
       }
     }
@@ -164,6 +180,9 @@ $(document).ready(function () {
 
   // Backspace
   $(document).on("keydown", function (key) {
+    if (secondsRemaining < 0) {
+      return;
+    }
     if (key.keyCode === 8) {
       $("span").eq(currentIndex).removeClass("blinking");
       if (currentIndex > 0) {
@@ -171,6 +190,7 @@ $(document).ready(function () {
           wordCount--;
         }
         currentIndex--;
+        characterCount--;
         if (
           $("span").eq(currentIndex).css("background-color") ===
           "rgb(255, 79, 31)"
@@ -197,7 +217,43 @@ $(document).ready(function () {
     }
   })
 
+
+  	//calculates all wpm's and word count
+	function wpmCounter() {
+		Gross_wpm = Math.floor(((wordCount - errorCount) / secondsPassed) * 60);
+		Raw_wpm = Math.floor(((wordCount / secondsPassed) * 60));
+		
+		if (Gross_wpm < 0 || isNaN(Gross_wpm) || Gross_wpm == Infinity) Gross_wpm = 0;
+		if (isNaN(Raw_wpm) || Raw_wpm == Infinity) Raw_wpm = 0;
+	}
+  
+	//calculates the accuracy
+	function accuracy(){
+		accuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+		if (isNaN(accuracyPercent)) accuracyPercent = 0;
+		accuracyPercent = accuracyPercent.toFixed(0);
+		
+	}
+
+  	//handles all textcounters
+	function TextCounter(){
+		wpmCounter();
+		accuracy();
+    wordCountEl.text(wordCount.toString());
+		// wpmEl.text(Gross_wpm.toString());
+		accuracyEl.text(accuracyPercent.toString());
+	}
+  
+  	// Timer
+	function startTimer() {
+		let interval = setInterval(function () {
+			if (secondsRemaining-- > 0) {
+				TextCounter();
+				secondsPassed++;
+        timerEl.text(secondsRemaining.toString())
+			}
+		}, 1000);
+	}
+
   renderWords();
-
-
 });

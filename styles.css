@@ -167,6 +167,10 @@ h3 {
   font-size: 2rem;
 }
 
+.time {
+  font-size: 1.5rem;
+}
+
 .quote-container {
   background-color: rgba(14, 147, 224, 0.144);
   padding: 1em;
