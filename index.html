@@ -57,7 +57,7 @@
           </div>
           <div class="module">
             <h2 class="speed">Word Count</h2>
-            <h3 id="word-count-val">55</h3>
+            <h3 id="word-count-val">0</h3>
           </div>
           <div class="module">
             <h2 class="accuracy">Accuracy</h2>
@@ -74,22 +74,24 @@
             <!-- <label for="duration">Duration:</label> -->
             <h2 class="duration">Duration</h2>
             <select name="duration" id="duration">
-              <option value="15sec">15 seconds</option>
-              <option value="30sec">30 seconds</option>
-              <option value="60sec">60 seconds</option>
+              <option value="111">Select Duration</option>
+              <option value="15">15 seconds</option>
+              <option value="30">30 seconds</option>
+              <option value="60">60 seconds</option>
             </select>
           </div>
           <div class="test-type">
             <!-- <label for="test-type">Type:</label> -->
             <h2 class="test-type">Type</h2>
             <select name="test-type" id="test-type">
+              <option value="aaa">Select Type</option>
               <option value="words">Words</option>
               <option value="quotes">Quotes</option>
             </select>
           </div>
           <div class="reset">
             <h2 class="reset">Reset</h2>
-            <button class="reset-button" onclick="restart()">
+            <button class="reset-button" onclick="window.location.reload()">
               <i class="fa fa-refresh"></i>
             </button>
           </div>

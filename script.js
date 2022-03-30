@@ -185,12 +185,14 @@ $(document).ready(function () {
     }
     if (key.keyCode === 8) {
       $("span").eq(currentIndex).removeClass("blinking");
+      if (characterCount > 0) {
+        characterCount--;
+      }
       if (currentIndex > 0) {
         if (testContent[currentIndex] == " ") {
           wordCount--;
         }
         currentIndex--;
-        characterCount--;
         if (
           $("span").eq(currentIndex).css("background-color") ===
           "rgb(255, 79, 31)"
@@ -204,18 +206,6 @@ $(document).ready(function () {
       }
     }
   });
-
-  $("#test-type").change(() => {
-    let testValue = $("#test-type").val();
-    state = testValue;
-
-    if (state === "words") {
-      renderWords();
-    }
-    else {
-      renderQuotes();
-    }
-  })
 
 
   	//calculates all wpm's and word count
@@ -241,7 +231,7 @@ $(document).ready(function () {
 		accuracy();
     wordCountEl.text(wordCount.toString());
 		// wpmEl.text(Gross_wpm.toString());
-		accuracyEl.text(accuracyPercent.toString());
+		accuracyEl.text(accuracyPercent.toString() + "%");
 	}
   
   	// Timer
@@ -250,10 +240,47 @@ $(document).ready(function () {
 			if (secondsRemaining-- > 0) {
 				TextCounter();
 				secondsPassed++;
-        timerEl.text(secondsRemaining.toString())
+        timerEl.text(secondsRemaining.toString());
 			}
 		}, 1000);
 	}
 
-  renderWords();
+
+  // Handle the user changing the type of test.
+  $("#test-type").change(() => {
+    let testValue = $("#test-type").val();
+    localStorage.setItem("testType", testValue);
+    
+    window.location.reload();
+  });
+
+  
+  $("#duration").change(() => {
+    let timeValue = $("#duration").val();
+    localStorage.setItem("timeVal", timeValue);
+
+    window.location.reload();
+  });
+
+
+
+  function sessionSetup() {
+    state = localStorage.getItem("testType");
+    secondsRemaining = localStorage.getItem("timeVal");
+
+    if (state === "words") {
+      renderWords();
+    }
+    else {
+      renderQuotes();
+    }
+
+    if (secondsRemaining === null || secondsRemaining === 111) {
+      secondsRemaining = 60;
+    }
+    
+    timerEl.text(secondsRemaining.toString())
+  }
+
+  sessionSetup();
 });
