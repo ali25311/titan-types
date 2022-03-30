@@ -9,9 +9,6 @@ $(document).ready(function () {
   let characterCount = 0;
   let secondsPassed = 0;
   let secondsRemaining = 60;
-  let Gross_wpm = 0;
-  let Raw_wpm = 0;
-  let accuracyPercent = 0;
   let currentIndex = 0;
   let quoteEl = $("#generated-quote");
   let timerEl = $("#timer-val");
@@ -140,7 +137,9 @@ $(document).ready(function () {
   // Keypress handling
   $(document).on("keypress", function (key) {
     		//updates counters on keypress
-		if (secondsRemaining > 0) TextCounter();
+		if (secondsRemaining > 0) {
+      updateStats();
+    }
     else {
       return;
     }
@@ -155,7 +154,6 @@ $(document).ready(function () {
 
     if (testContent[currentIndex + 1] === " " && errorStreak < 2) {
       wordCount++;
-      console.log(wordCount);
     }
 
     if (charTyped === testContent[currentIndex]) {
@@ -210,35 +208,44 @@ $(document).ready(function () {
 
   	//calculates all wpm's and word count
 	function wpmCounter() {
-		Gross_wpm = Math.floor(((wordCount - errorCount) / secondsPassed) * 60);
-		Raw_wpm = Math.floor(((wordCount / secondsPassed) * 60));
+		let grossWpm = Math.floor(((wordCount - errorCount) / secondsPassed) * 60);
+		let rawWpm = Math.floor(((wordCount / secondsPassed) * 60));
 		
-		if (Gross_wpm < 0 || isNaN(Gross_wpm) || Gross_wpm == Infinity) Gross_wpm = 0;
-		if (isNaN(Raw_wpm) || Raw_wpm == Infinity) Raw_wpm = 0;
+		if (grossWpm < 0 || isNaN(grossWpm) || grossWpm== Infinity) {
+      grossWpm = 0;
+    }
+
+		if (isNaN(rawWpm) || rawWpm == Infinity) {
+      rawWpm = 0;
+    }
+
+    return grossWpm;
 	}
   
 	//calculates the accuracy
-	function accuracy(){
-		accuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+	function fetchAccuracy() {
+		let accuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+
 		if (isNaN(accuracyPercent)) accuracyPercent = 0;
-		accuracyPercent = accuracyPercent.toFixed(0);
+		accuracyPercent = accuracyPercent.toFixed(2);
 		
+    return accuracyPercent;
 	}
 
-  	//handles all textcounters
-	function TextCounter(){
-		wpmCounter();
-		accuracy();
+  	// Updates the WPM and accuracy
+	function updateStats() {
+		let accuracyPercent = fetchAccuracy();
     wordCountEl.text(wordCount.toString());
-		// wpmEl.text(Gross_wpm.toString());
-		accuracyEl.text(accuracyPercent.toString() + "%");
+		
+    accuracyEl.text(accuracyPercent.toString() + "%");
 	}
   
-  	// Timer
+
+  	// Initiate the timer sequence
 	function startTimer() {
 		let interval = setInterval(function () {
 			if (secondsRemaining-- > 0) {
-				TextCounter();
+				updateStats();
 				secondsPassed++;
         timerEl.text(secondsRemaining.toString());
 			}
@@ -246,7 +253,7 @@ $(document).ready(function () {
 	}
 
 
-  // Handle the user changing the type of test.
+  // Handle the user changing the type of test
   $("#test-type").change(() => {
     let testValue = $("#test-type").val();
     localStorage.setItem("testType", testValue);
@@ -254,7 +261,7 @@ $(document).ready(function () {
     window.location.reload();
   });
 
-  
+  // Handle the user changing the duration of the test  
   $("#duration").change(() => {
     let timeValue = $("#duration").val();
     localStorage.setItem("timeVal", timeValue);
@@ -263,7 +270,7 @@ $(document).ready(function () {
   });
 
 
-
+  // Set up the session based off of the user's selected settings
   function sessionSetup() {
     state = localStorage.getItem("testType");
     secondsRemaining = localStorage.getItem("timeVal");
@@ -275,7 +282,7 @@ $(document).ready(function () {
       renderQuotes();
     }
 
-    if (secondsRemaining === null || secondsRemaining === 111) {
+    if (secondsRemaining === null || secondsRemaining === undefined || secondsRemaining === 111) {
       secondsRemaining = 60;
     }
     
