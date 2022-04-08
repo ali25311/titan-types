@@ -7,8 +7,8 @@ $(document).ready(function () {
   let errorCount = 0;
   let errorStreak = 0;
   let characterCount = 0;
-  let secondsPassed = 0;
   let secondsRemaining = 60;
+  let secondsDuration = 0;
   let currentIndex = 0;
   let quoteEl = $("#generated-quote");
   let timerEl = $("#timer-val");
@@ -213,25 +213,32 @@ $(document).ready(function () {
 
   	//calculates all wpms
 	function wpmCounter() {
-		let grossWpm = Math.floor(((wordCount - errorCount) / secondsPassed) * 60);
-		let rawWpm = Math.floor(((wordCount / secondsPassed) * 60));
-		
-		if (grossWpm < 0 || isNaN(grossWpm) || grossWpm== Infinity) {
+		let grossWpm = 0;
+    let netWpm = 0;
+    let minuteCount = secondsDuration / 60;
+
+    grossWpm = Math.floor(Math.floor(characterCount / 5) / (minuteCount));
+    netWpm = Math.floor((grossWpm - errorCount) / minuteCount);  
+    
+    if (isNaN(grossWpm) || grossWpm == Infinity) {
       grossWpm = 0;
     }
 
-		if (isNaN(rawWpm) || rawWpm == Infinity) {
-      rawWpm = 0;
+    if (netWpm < 0 || isNaN(netWpm) || netWpm == Infinity) {
+      netWpm = 0;
     }
 
-    return grossWpm;
+    return netWpm;
 	}
   
 	//calculates the accuracy
 	function fetchAccuracy() {
 		let accuracyPercent = ((characterCount - errorCount)/characterCount)*100;
 
-		if (isNaN(accuracyPercent)) accuracyPercent = 0;
+    if (isNaN(accuracyPercent)) { 
+      accuracyPercent = 0;
+    }
+
 		accuracyPercent = accuracyPercent.toFixed(2);
 		
     return accuracyPercent;
@@ -258,7 +265,6 @@ $(document).ready(function () {
 		let interval = setInterval(function () {
 			if (secondsRemaining-- > 0) {
 				updateStats();
-				secondsPassed++;
         timerEl.text(secondsRemaining.toString());
 			}
       else if (secondsRemaining <= 0 && sessionEnded === false) {
@@ -302,6 +308,8 @@ $(document).ready(function () {
       secondsRemaining = 60;
     }
     
+    secondsDuration = secondsRemaining;
+
     timerEl.text(secondsRemaining.toString())
   }
 
