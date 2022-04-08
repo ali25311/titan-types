@@ -1,4 +1,4 @@
-const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random?minLength=200&maxLength=250";
+const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random?minLength=150&maxLength=250";
 const RANDOM_WORDS = "sale spokesperson rainbow reader tent mill sweat black gesture isolation settle fortune provide try interactive prayer build research date shortage palace troop brag activity room integration market total ankle cool battlefield duck stick ready publish vertical federation concrete bold rob have habitat pension outside freeze disposition cheap symbol feeling clay alarm inappropriate merit loss haunt laborer go bee frighten fit ecstasy assessment lot gown depart wing producer coast fuss fibre chain purpose random wine friend book researcher discount theorist cheque  council machinery coma gregarious bronze even pluck offensive hard rehearsal cap negligence information producer project sheet breast mug galaxy charter shatter calendar wheel dismiss guerrilla report rotten basket dawn child secular sermon salmon purpose nonremittal stay labour bar preference liberal exploit isolation platform amuse tie adventure jewel reserve native volume patrol poetry organisation socialist lily endorse jet prevalence general ratio artificial approve management sticky second rebel tycoon jaw marine application outfit letter factor rock eat disappear ribbon herd play float soldier recognize report contribution census citizen cater sandwich direct proportion objective unlikely circulation deviation mark wrong cherry deal cluster version invasion turkey annual thank camera layer property log devote environmental peanut episode image bench carbon advertising bundle tasty beneficiary".split(" ");
 
 // Main code here
@@ -12,11 +12,16 @@ $(document).ready(function () {
   let currentIndex = 0;
   let quoteEl = $("#generated-quote");
   let timerEl = $("#timer-val");
-  // let wpmEl = $("#wpm-val");
   let wordCountEl = $("#word-count-val");
   let accuracyEl = $("#accuracy-val");
   let testContent = "";
   let state = "words";
+  let finalWpmEl = $("#final-wpm");
+  let finalWordsTypedEl = $("#final-words-typed");
+  let finalCharactersEl = $("#final-characters");
+  let finalErrorsEl = $("#final-errors");
+  let finalAccuracyEl = $("#final-accuracy");
+  let sessionEnded = false;
 
 	async function getRandomQuote() {
 		return fetch(RANDOM_QUOTE_API_URL)
@@ -206,7 +211,7 @@ $(document).ready(function () {
   });
 
 
-  	//calculates all wpm's and word count
+  	//calculates all wpms
 	function wpmCounter() {
 		let grossWpm = Math.floor(((wordCount - errorCount) / secondsPassed) * 60);
 		let rawWpm = Math.floor(((wordCount / secondsPassed) * 60));
@@ -235,9 +240,16 @@ $(document).ready(function () {
   	// Updates the WPM and accuracy
 	function updateStats() {
 		let accuracyPercent = fetchAccuracy();
+    let wpm = wpmCounter();
+
     wordCountEl.text(wordCount.toString());
-		
     accuracyEl.text(accuracyPercent.toString() + "%");
+
+    finalWpmEl.text("WPM: " + wpm.toString());
+    finalWordsTypedEl.text("Words Typed: " + wordCount.toString());
+    finalCharactersEl.text("Characters Typed: " + characterCount.toString());
+    finalErrorsEl.text("Errors: " + errorCount.toString());
+    finalAccuracyEl.text("Accuracy: " + accuracyPercent.toString() + "%");
 	}
   
 
@@ -249,6 +261,10 @@ $(document).ready(function () {
 				secondsPassed++;
         timerEl.text(secondsRemaining.toString());
 			}
+      else if (secondsRemaining <= 0 && sessionEnded === false) {
+        sessionEnded = true;
+        $("#modal-overlay").css("display", "flex");
+      }
 		}, 1000);
 	}
 

@@ -161,7 +161,7 @@ li a:hover {
 }
 
 
-h3 {
+main h3 {
   text-align: center;
   color: chocolate;
   font-size: 2rem;
@@ -282,6 +282,73 @@ select {
   border-bottom: 0.15em solid #000000;
   animation: blink 0.8s linear alternate infinite;
 }
+
+
+/* Modal Styling */
+#modal-overlay {
+  min-height: 100vh;
+  min-width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#status-modal {
+  width: 50%;
+  height: 30rem;
+  background-color: #00274c;
+  font-family: "Lora", sans-serif;
+  border-radius: 1em;
+  border: 4px solid #ff9c2b;
+}
+
+#modal-heading-container {
+  position: relative;
+}
+
+#modal-heading {
+  text-align: center;
+  font-size: 3.5rem;
+  color: #ff9c2b;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.15em;
+  border-bottom: 4px solid #ff9c2b;
+}
+
+#exit-box {
+  position: absolute;
+  top: 0.3em;
+  right: 0.3em;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.55rem;
+  color: #ffffff;
+}
+
+#exit-box:hover {
+  color: #ff8800;
+  cursor: pointer;
+}
+
+#stats-body {
+  margin: auto;
+  text-align: center;
+}
+
+#stats-body h3 {
+  font-size: 2rem;
+  margin-top: 0.75em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
 
 @keyframes blink {
   from {
