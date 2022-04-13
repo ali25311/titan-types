@@ -1,229 +1,265 @@
+// Constants
 const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random?minLength=150&maxLength=250";
-const RANDOM_WORDS = "sale spokesperson rainbow reader tent mill sweat black gesture isolation settle fortune provide try interactive prayer build research date shortage palace troop brag activity room integration market total ankle cool battlefield duck stick ready publish vertical federation concrete bold rob have habitat pension outside freeze disposition cheap symbol feeling clay alarm inappropriate merit loss haunt laborer go bee frighten fit ecstasy assessment lot gown depart wing producer coast fuss fibre chain purpose random wine friend book researcher discount theorist cheque  council machinery coma gregarious bronze even pluck offensive hard rehearsal cap negligence information producer project sheet breast mug galaxy charter shatter calendar wheel dismiss guerrilla report rotten basket dawn child secular sermon salmon purpose nonremittal stay labour bar preference liberal exploit isolation platform amuse tie adventure jewel reserve native volume patrol poetry organisation socialist lily endorse jet prevalence general ratio artificial approve management sticky second rebel tycoon jaw marine application outfit letter factor rock eat disappear ribbon herd play float soldier recognize report contribution census citizen cater sandwich direct proportion objective unlikely circulation deviation mark wrong cherry deal cluster version invasion turkey annual thank camera layer property log devote environmental peanut episode image bench carbon advertising bundle tasty beneficiary".split(" ");
+const RANDOM_WORDS = "sale spokesperson rainbow reader tent mill sweat black gesture isolation settle fortune provide try interactive prayer build research date shortage palace troop brag activity room integration market total ankle cool battlefield duck stick ready publish vertical federation concrete bold rob have habitat pension outside freeze disposition cheap symbol feeling clay alarm inappropriate merit loss haunt laborer go bee frighten fit ecstasy assessment lot gown depart wing producer coast fuss fibre chain purpose random wine friend book researcher discount theorist cheque  council machinery coma gregarious bronze even pluck offensive hard rehearsal cap negligence information producer project sheet breast mug galaxy charter shatter calendar wheel dismiss guerrilla report rotten basket dawn child secular sermon salmon purpose nonremittal stay labour bar preference liberal exploit isolation platform amuse tie adventure jewel reserve native volume patrol poetry organisation socialist lily endorse jet prevalence general ratio artificial approve management sticky second rebel tycoon jaw marine application outfit letter factor rock eat disappear ribbon herd play float soldier recognize report contribution census citizen cater sandwich direct proportion objective unlikely circulation deviation mark wrong cherry deal cluster version invasion turkey annual thank camera layer property log devote environmental peanut episode image bench carbon advertising bundle tasty beneficiary house home box desk telephone pants shoes shirt hair glasses whiskey poster water real nail hammer pool vase pot highway street lamp radio".split(" ");
 
-// Main code here
+
+
 $(document).ready(function () {
-  let wordCount = 0;
-  let errorCount = 0;
-  let errorStreak = 0;
-  let characterCount = 0;
-  let secondsRemaining = 60;
-  let secondsDuration = 0;
-  let currentIndex = 0;
-  let quoteEl = $("#generated-quote");
-  let timerEl = $("#timer-val");
-  let wordCountEl = $("#word-count-val");
-  let accuracyEl = $("#accuracy-val");
-  let testContent = "";
-  let state = "words";
-  let finalWpmEl = $("#final-wpm");
-  let finalWordsTypedEl = $("#final-words-typed");
-  let finalCharactersEl = $("#final-characters");
-  let finalErrorsEl = $("#final-errors");
-  let finalAccuracyEl = $("#final-accuracy");
-  let sessionEnded = false;
+  let wordCount = 0; // The number of words the user has typed
+  let errorCount = 0; // The number of errors the user has made
+  let errorStreak = 0; // The number of consecutive errors made by the user
+  let characterCount = 0; // The number of characters the user has typed
+  let secondsRemaining = 60; // The seconds remaining in the current match
+  let secondsDuration = 0; // The length of the session (value from dropdown)
+  let currentIndex = 0; // The user's current position in the typing test (index)
+  let segmentEl = $("#test-segment"); // The region where quotes/words go
+  let timerEl = $("#timer-val"); // The timer element
+  let wordCountEl = $("#word-count-val"); // The word count
+  let accuracyEl = $("#accuracy-val"); // The accuracy percentage
+  let testContent = ""; // String intermediary to store generated quotes/words.
+  let state = "words"; // State of the match (quotes mode or words mode)
+  let sessionStarted = false;
+  let sessionEnded = false; // Track if the session is still going
 
+  // MODAL VARIABLES
+  let finalWpmEl = $("#final-wpm"); // WPM in status modal
+  let finalWordsTypedEl = $("#final-words-typed"); // Word count in status modal
+  let finalCharactersEl = $("#final-characters"); // Character count in status modal
+  let finalErrorsEl = $("#final-errors"); // Error count in status modal
+  let finalAccuracyEl = $("#final-accuracy"); // Accuracy percentage in status modal
+  
+
+  // Function to utilize API call to generate random quote
 	async function getRandomQuote() {
 		return fetch(RANDOM_QUOTE_API_URL)
 			.then((response) => response.json())
 			.then((data) => data.content)
 			.then((quote) => {
-				let clean = cleanQuote(quote);
-				return clean;
+        return quote;
 			});
 	}
 
-  async function cleanQuote(inputQuote) {
-		let quote = inputQuote
-		let cleanQuote = false;
-		let dirtyChar = false;
-		let cleanChar = false;
-
-		while (cleanQuote == false) {
-
-			var filteredQuote = quote;
-			filteredQuote = filteredQuote.split('');
-
-			for (let x = 0; x < filteredQuote.length; x++) {
-				if (filteredQuote[x].charCodeAt() < 126 && filteredQuote[x].charCodeAt() != 96 && filteredQuote[x].charCodeAt() != 95) {
-					cleanChar = true;
-				}
-				else {
-					quote = await getRandomQuote();
-					dirtyChar = true;
-					break;
-				}
-			}
-			if (cleanChar == true && dirtyChar == false) {
-				cleanQuote = true;
-
-			}
-			else {
-				dirtyChar = false;
-				cleanChar = false;
-			}
-		}
-		return quote;
-	}
-
-
+  
+  // This function will generate and render the quotes in the testing section
   async function renderQuotes() {
-    quoteEl.empty();
-    currentIndex = 0;
+     // Fetch two quotes
 		let quote1 = await getRandomQuote();
     let quote2 = await getRandomQuote();
+    let characterSpan = null;
 
-    //record the length of the first quote
-		topQuoteLength = quote1.length;
-	
-		// record the length of the second quote
-		bottomQuoteLength = quote2.length;
+    // Empty the current test contents (if any)
+    segmentEl.empty(); 
+    // Reset the user's position to index 0
+    currentIndex = 0;
 
-		// add a single  character in between them (so one of the quote lengths is actually wrong)
+		// Assign the testcontent to be both quotes appended (with additional spaces for formatting purposes)
     testContent = quote1 + ' ' + quote2 + ' ';
 
-		testContent.split("").forEach((character) => {
-			const characterSpan = document.createElement("span");
+    // Iterate through the test content, character by character
+		testContent.split('').forEach((character) => {
+      // Create a new span element, with its contents being an individual character in testContent
+			characterSpan = document.createElement("span");
 			characterSpan.innerText = character;
-			quoteEl.append(characterSpan);
+      
+      // Append this span element to the testing section, the segment element
+			segmentEl.append(characterSpan);
 		});
 	}
 
 
+  // This function will gather a specific amount of random words, and return them as an array
   async function getRandomWords() {
     let words = [];
 
+    // Gather a fixed amount of random words from our constant RANDOM_WORDS array, and push them into a new array
     for (let i = 0; i < 60; i++) {
-      words.push(RANDOM_WORDS[Math.floor(Math.random() * 200)]);
+      words.push(RANDOM_WORDS[Math.floor(Math.random() * RANDOM_WORDS.length)]);
     }
 
+    // Return the contents of this array (return the selected random words)
     return words;
   }
 
 
+  // This function will utilized the random words selected, and render them into the testing segment/section
   async function renderWords() {
-    quoteEl.empty();
+    let characterSpan = null;
+
+    // Empty the contents of the testing segment (if any)
+    segmentEl.empty();
+    // Reset the user's current index position to 0
     currentIndex = 0;
+
+    // Set the test content to the fixed amount of random words selected, joined by a space
     testContent = (await getRandomWords()).join(" ");
+    // Append a space to the test content for formatting purposes (better flow for the user)
     testContent += ' ';
 
+    // Iterate through our test content, character by character, render them into the testing segment as a sequence of spans
     testContent.split("").forEach((character) => {
-			const characterSpan = document.createElement("span");
+      // Create a new span element, assign its contents to the character we are focusing on.
+			characterSpan = document.createElement("span");
 			characterSpan.innerText = character;
-			quoteEl.append(characterSpan);
+
+      // Append this span element to the testing segment, generating the test segment.
+			segmentEl.append(characterSpan);
 		});
   }
 
 
+
+  // Function to update the display of the user's position,  based off of their status (correct, incorrect, backspacing)
   function updatePosition(status) {
+    let prevEl = null;
+    let charEl = null;
+
+    // Remove the blinking effect for the previous character, as long as the user has progressed past the first character
     if (currentIndex > 0) {
-      let prevEl = $("span").eq(currentIndex - 1);
+      prevEl = $("span").eq(currentIndex - 1);
       prevEl.removeClass("blinking");
     }
     
-    let charEl = $("span").eq(currentIndex);
+    // Select the character that the user is currently on, give it a blinking effect
+    charEl = $("span").eq(currentIndex);
     charEl.addClass("blinking");
 
+    // If the user made an error (status 0), give the incorrect mark a red bg color
     if (status === 0) {
       charEl.css("background-color", "#ff4f1f");
       charEl.css("color", "#ffffff");
+    // If the user typed in a correct mark (status 1), give the correct char a green bg color
     } else if (status === 1) {
       charEl.css("background-color", "#39c217");
       charEl.css("color", "#ffffff");
+    // If the user hit backspace (status > 1), remove the bg from the current char
     } else {
       charEl.css("background", "transparent");
       charEl.css("color", "#ff9c2b");
     }
   }
 
-  let block = false;
+  
 
 
-  // Keypress handling
+  // Event handler for user keypresses (all standard keys typed, except backspacing)
   $(document).on("keypress", function (key) {
-    		//updates counters on keypress
-		if (secondsRemaining > 0) {
-      updateStats();
-    }
-    else {
+    let charTyped = null;
+
+    // If the match is over (secondsRemaining <= 0), immediately exit this handler
+    if (secondsRemaining <= 0) {
       return;
     }
-		//starts timer
-		if (block == false) {startTimer(); block = true;}
 
-    let charTyped = String.fromCharCode(key.keyCode);
+		// If the user hits a key and the session hasn't started, begin the timer
+		if (sessionStarted === false) {
+      startTimer(); 
+      sessionStarted = true;
+    }
 
+    // Fetch the character that the user typed in
+    charTyped = String.fromCharCode(key.keyCode);
+
+    // If the character typed is correct, reset the error streak
     if (charTyped === testContent[currentIndex]) {
       errorStreak = 0;
     }
 
-    if (testContent[currentIndex + 1] === " " && errorStreak < 2) {
+    // If the use hits the end of a word and their error streak is < 2, update the word count.
+    if ((testContent[currentIndex + 1]) === ' ' && (errorStreak < 2)) {
       wordCount++;
     }
 
+    // If the user types the correct character, update their position accordingly
     if (charTyped === testContent[currentIndex]) {
       updatePosition(1);
+      // Update their position (index) and total characters typed
       currentIndex++;
       characterCount++;
-    } else {
+    } 
+    else {
+      // If the user types incorrectly and their error streak is < 2...
       if (errorStreak < 2) {
+        // Move them along
         updatePosition(0);
+        // Increment their error counts, increment their index, characters, and error streak
         errorCount++;
         currentIndex++;
         characterCount++;
         errorStreak++;
       }
+      // Do nothing if their error streak is >= 2 and they typed incorrectly, force them to fix their mistake.
     }
-
+    // If the user hits the end of the testing content
     if (currentIndex == testContent.length) {
+      // Generate new words or quotes, based off of the setting
       (state === "words") ? renderWords() : renderQuotes();
     }
+
+    // Update the stats once a user's keypress has been handled and the respective variables have been updated
+    updateStats();
   });
 
 
-  // Backspace
+  // Event handler for if a user hits the backspace key, "keydown" needed for event-related keys.
   $(document).on("keydown", function (key) {
-    if (secondsRemaining < 0) {
+
+    // If the match is over (secondsRemaining <= 0), immediately exit this handler
+    if (secondsRemaining <= 0) {
       return;
     }
+
+    // If the keycode is 8 (ASCII code for a backspace), act accordingly
     if (key.keyCode === 8) {
+      // Remove the blinking effect from where they just backspaced from
       $("span").eq(currentIndex).removeClass("blinking");
+
+      // If the amount of characters exceeds zero, decrement it
       if (characterCount > 0) {
         characterCount--;
       }
+
+      // If the user has progressed past the first character in the testing content, act accordingly
       if (currentIndex > 0) {
-        if (testContent[currentIndex] == " ") {
+        // If the user backspaces past a space, decrement the word count
+        if (testContent[currentIndex] === " ") {
           wordCount--;
         }
+
+        // Decrement the currentIndex
         currentIndex--;
-        if (
-          $("span").eq(currentIndex).css("background-color") ===
-          "rgb(255, 79, 31)"
-        ) {
+
+        // If the user backspaces a wrong character...
+        if ($("span").eq(currentIndex).css("background-color") === "rgb(255, 79, 31)") {
+          // Decrease the amount of errors and the error streak (if there is one)
           errorCount--;
           if (errorStreak > 0) {
             errorStreak--;
           }
         }
+
+        // Update the user's position with a backspace status (2)
         updatePosition(2);
       }
     }
   });
 
 
-  	//calculates all wpms
+  // Function to calculate the WPM and return its value
 	function wpmCounter() {
-		let grossWpm = 0;
-    let netWpm = 0;
-    let minuteCount = secondsDuration / 60;
+		let grossWpm = 0; // The gross WPM
+    let netWpm = 0; // The net WPM (our final result)
+    let minuteCount = secondsDuration / 60; // The number of minutes the match is set to
 
+    // Calculate the gross and net WPM using specific formulas
     grossWpm = Math.floor(Math.floor(characterCount / 5) / (minuteCount));
-    netWpm = Math.floor((grossWpm - errorCount) / minuteCount);  
-    
+    netWpm = Math.floor((grossWpm - errorCount) / minuteCount);
+
+    // Ensure that the gross WPM is a safe value
     if (isNaN(grossWpm) || grossWpm == Infinity) {
       grossWpm = 0;
     }
 
+    // Ensure that the net WPM is a safe value
     if (netWpm < 0 || isNaN(netWpm) || netWpm == Infinity) {
       netWpm = 0;
     }
@@ -231,27 +267,36 @@ $(document).ready(function () {
     return netWpm;
 	}
   
-	//calculates the accuracy
+	// Calculation for the accuracy of the user
 	function fetchAccuracy() {
-		let accuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+    // Calculate the ccuracy based off of a specific formula
+		let accuracyPercent = (((characterCount - errorCount) / characterCount) * 100);
 
+    // If the accuracy isn't a number, set it to 0 for safety
     if (isNaN(accuracyPercent)) { 
       accuracyPercent = 0;
     }
 
+    // Round off the accuracy percentage to 2 decimal places
 		accuracyPercent = accuracyPercent.toFixed(2);
 		
     return accuracyPercent;
 	}
 
-  	// Updates the WPM and accuracy
-	function updateStats() {
-		let accuracyPercent = fetchAccuracy();
-    let wpm = wpmCounter();
 
+
+  	// Updates the WPM, accuracy, and all of the corresponding displays
+	function updateStats() {
+    // Fetch the user's accuracy
+		let accuracyPercent = fetchAccuracy();
+    // Fetch the user's WPM
+    let wpm = wpmCounter();
+    
+    // Update the statistics display with the proper word count and accuracy
     wordCountEl.text(wordCount.toString());
     accuracyEl.text(accuracyPercent.toString() + "%");
 
+    // MODAL DISPLAY UPDATES...
     finalWpmEl.text("WPM: " + wpm.toString());
     finalWordsTypedEl.text("Words Typed: " + wordCount.toString());
     finalCharactersEl.text("Characters Typed: " + characterCount.toString());
@@ -260,14 +305,16 @@ $(document).ready(function () {
 	}
   
 
-  	// Initiate the timer sequence
+  	// Function to initiate the timer
 	function startTimer() {
+    // Tick down the timer every second
 		let interval = setInterval(function () {
 			if (secondsRemaining-- > 0) {
-				updateStats();
+        // Update the timer every second
         timerEl.text(secondsRemaining.toString());
 			}
       else if (secondsRemaining <= 0 && sessionEnded === false) {
+        // End the session if it hasn't already ended, display the modal
         sessionEnded = true;
         $("#modal-overlay").css("display", "flex");
       }
@@ -275,28 +322,38 @@ $(document).ready(function () {
 	}
 
 
-  // Handle the user changing the type of test
+  // Event handler to handle the user changing the type of test
   $("#test-type").change(() => {
+    // Fetch the user's selected test value from the dropdown menu
     let testValue = $("#test-type").val();
+    // Store its value in local storage
     localStorage.setItem("testType", testValue);
     
+    // Reload the page (refresh)
     window.location.reload();
   });
+
+
 
   // Handle the user changing the duration of the test  
   $("#duration").change(() => {
+     // Fetch the user's selected time duration from the dropdown menu
     let timeValue = $("#duration").val();
+    // Store its value in local storage
     localStorage.setItem("timeVal", timeValue);
 
+    // Reload the page (refresh)
     window.location.reload();
   });
 
 
-  // Set up the session based off of the user's selected settings
+  // Function to prepare the session (integrate user's settings, prepare the test itself)
   function sessionSetup() {
+    // Fetch both the state (quores or words) and duration from local storage
     state = localStorage.getItem("testType");
-    secondsRemaining = localStorage.getItem("timeVal");
+    secondsDuration = localStorage.getItem("timeVal");
 
+    // Based off of the state of the match, render the corresponding input
     if (state === "words") {
       renderWords();
     }
@@ -304,14 +361,18 @@ $(document).ready(function () {
       renderQuotes();
     }
 
-    if (secondsRemaining === null || secondsRemaining === undefined || secondsRemaining === 111) {
-      secondsRemaining = 60;
+    // If the seconds isn't found in local storage, or the user clicked the menu option that's text (111), set it to 60 by default
+    if (secondsDuration === null || secondsDuration === undefined || secondsDuration === 111) {
+      secondsDuration = 60;
     }
     
-    secondsDuration = secondsRemaining;
+    // Set the seconds remaining to be the duration of the test that the user specified
+    secondsRemaining = secondsDuration;
 
+    // Set the text of our timer to be whatever the duration is of our test
     timerEl.text(secondsRemaining.toString())
   }
-
+  
+  // Set up the session of the test upon loading of the document/page.
   sessionSetup();
 });
