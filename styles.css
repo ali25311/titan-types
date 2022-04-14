@@ -5,13 +5,6 @@
 * Browsers: last 4 version
 */
 
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.3.6,
-* Autoprefixer: v10.3.1
-* Browsers: last 4 version
-*/
-
 /* Start of Stephen's CSS for root/nav/header */
 * {
   margin: 0;
@@ -21,23 +14,30 @@
   font-family: "Lora", serif;
 }
 
+/* Settings for background image of website */
 body {
   background-color: #00274c;
   background-image: url("assets/background-1.jpg");
+  /* ensure background is one fixed iamge on the site and covers the entire background */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 
+/* The main div for the header of the website */
 header {
   background: #00274c;
-  min-height: 7.5rem;
-  max-height: 7.5rem;
+  /* min-height: 7.5rem;
+  max-height: 7.5rem; */
+  /* takes up the full width of the screen */
   width: 100%;
+  /* creating small space around content inside header */
   padding: 0.15em 0;
+  /* creating space outside the header at the bottom (where it ends)*/
   margin-bottom: 3em;
 }
 
+/* All things generaeted by the PostCSS Autoprefixer */
 .heading-content-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,6 +57,7 @@ header {
   margin: auto;
 }
 
+/* generated PostCSS Autoprefixer */
 .logo-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -70,17 +71,21 @@ header {
   align-items: center;
 }
 
-.logo-img {
+/* Logo for the header(Titans Logo) */
+/* .logo-img {
   max-width: 7rem;
   max-height: 7rem;
-}
+} */
 
+/* For the text next to the logo on the header "Titan Types" */
 .logo-text {
   font-weight: 600;
-  font-size: 3.4rem;
+  /* font-size: 3.4rem; */
   letter-spacing: 0.01em;
 }
 
+/* generated PostCSS Autoprefixer */
+/* also makes the header a flex & sets its direction to row for RWD purposes */
 nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,9 +96,10 @@ nav ul {
   flex-direction: row;
 }
 
+/* Removing default styling for HTML lists */
 ul li {
   list-style: none;
-  font-size: 2.4rem;
+  /* font-size: 2.4rem; */
   cursor: pointer;
   font-weight: 600;
 }
@@ -107,49 +113,60 @@ ul li:hover {
 }
 /* End of Stephen's CSS for root/nav/header */
 
+/* Changing default styling for links in the header */
 li a {
   text-decoration: none;
   color: white;
 }
-
+/* Changing color of links in header to a different one */
 li a:hover {
   color: #ff9c2b;
 }
-
+/* Changing color of link of the current page*/
 .current-page {
   color: #ff9c2b;
 }
 
+/* Centering the main module of the website  */
+/* contains: segment, stats, testing & settings containers */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The module for holding the 3 main modules of the typing website */
+/* inside: test container, stats container & segment container */
 .test-container {
   min-width: 95%;
   max-width: 95%;
   background-color: #00274c;
-  /* margin: 250px auto 0 auto; */
   line-height: 2;
   padding: 2em 2em;
   display: -ms-inline-grid;
+  /* Turning the container into a CSS (on one line) grid for easier setup of the stats. */
   display: inline-grid;
   -ms-grid-columns: 15em 50px auto 50px 15em;
   grid-template-columns: 15em auto 15em;
-  /* grid-template-columns: repeat(3, 1fr); */
   -webkit-column-gap: 50px;
   -moz-column-gap: 50px;
   column-gap: 50px;
-  /* grid-auto-rows: minmax(100px, auto); */
-  /* grid-template-rows: 4px 4em 40px;
-  grid-template-rows: auto; */
 }
 
+/* Div/Container that contains the display for the stats of the typing test */
+/* inside: seconds remaining, word-count & accuracy  */
 .stats-container {
   background-color: rgba(14, 147, 224, 0.144);
   text-align: right;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
+  /* Turning the container into a flexbox for RWD purposes. */
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
+  /* Turning the container into a flexbox for RWD purposes. */
   flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -157,40 +174,53 @@ li a:hover {
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 
-
+/* Setting text size, position & color in the stats container.  */
 main h3 {
   text-align: center;
   color: chocolate;
   font-size: 2rem;
 }
-
+/* Setting text size for time portion of stats container */
 .time {
   font-size: 1.5rem;
 }
 
+/* Div/Container that displays the quote/words that the user must type.*/
 .segment-container {
   background-color: rgba(14, 147, 224, 0.144);
   padding: 1em;
   color: #ff9c2b;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   min-height: 25rem;
   max-height: 25rem;
+  /* To make sure that text doesn't overflow out of the container/div. */
+  word-wrap: break-word;
+  overflow: auto;
 }
 
+/* Default font-size for the displayed quote */
+/* .segment-display {
+  font-size: 1.8rem;
+} */
+
+/* Div/Container that contains the display for the user settings of the typing test */
+/* inside: Duration & Type options/drop-down, Reset button */
 .settings-container {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   background-color: rgba(14, 147, 224, 0.144);
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
+  /* Turning the container into a flexbox for RWD purposes. */
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
+  /* Turning the container into a flexbox for RWD purposes. */
   flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -201,6 +231,43 @@ main h3 {
   text-align: center;
 }
 
+/* CSS for the drop-down menus in the settings module.  */
+select {
+  background-color: #074783;
+  color: #ff8800;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0em;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+/* CSS for the Reset Button & Icon */
+.reset-button {
+  background-color: #ffffff00;
+  border: none;
+  color: #ffffff;
+  /* padding: 22px 22px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 3.1rem; */
+}
+
+.reset-button:hover {
+  color: #ff8800;
+  cursor: pointer;
+}
+
+.blinking {
+  border-bottom: 0.15em solid #000000;
+  animation: blink 0.8s linear alternate infinite;
+}
+
+/* CSS for the About page of the website */
 .about-container {
   padding: 1em;
   font-size: 1.5rem;
@@ -209,21 +276,25 @@ main h3 {
   line-height: 2;
   display: -webkit-box;
   display: -ms-flexbox;
+  /* using flexbox for easier RWD setup */
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
+  /* setting the about container in a column layout */
   flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
+  /* centering items in the about page module */
   align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
+  /* centering items in the about page module */
   justify-content: center;
   text-align: center;
   color: white;
 }
-
+/* setting colors in about page & spacing */
 .about {
   border: medium solid #ff8800;
   padding: 1em;
@@ -240,35 +311,7 @@ main h3 {
   color: #ff8800;
 }
 
-select {
-  background-color: #00274c4d;
-  color: #ff8800;
-  border: none;
-  padding: 0 1em 0 0;
-  margin: 0;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  line-height: inherit;
-}
-
-.reset-button {
-  background-color: #ffffff00;
-  border: none;
-  color: #ffffff;
-  /* padding: 22px 22px; */
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 3.1rem;
-}
-
-.reset-button:hover {
-  color: #ff8800;
-  cursor: pointer;
-}
-
+/* For the Github link on the About page */
 .learn-more a {
   text-decoration: none;
   color: white;
@@ -278,14 +321,10 @@ select {
   color: #ff8800;
 }
 
-.blinking {
-  border-bottom: 0.15em solid #000000;
-  animation: blink 0.8s linear alternate infinite;
-}
-
-
-/* Modal Styling */
+/* Modal Styling (CSS for the end screen stats module) */
+/* positioning of the modal */
 #modal-overlay {
+  /* Setting minimum size for the modal */
   min-height: 100vh;
   min-width: 100vw;
   max-height: 100vh;
@@ -294,12 +333,13 @@ select {
   position: absolute;
   top: 0;
   left: 0;
+  /* To not let it display immediately on the page */
   display: none;
   align-items: center;
   justify-content: center;
 }
 
-
+/* styling and sizing the actual modal, setting up font & colors/borders */
 #status-modal {
   width: 50%;
   height: 30rem;
@@ -349,7 +389,6 @@ select {
   color: #ffffff;
 }
 
-
 @keyframes blink {
   from {
     border-bottom: 0.15em solid #000000;
@@ -357,5 +396,275 @@ select {
 
   to {
     border: transparent;
+  }
+}
+
+/* ALL MEDIA QUERIES BELOW */
+
+@media only screen and (max-width: 2076px) {
+  /* FOR THE HEADER */
+  /* tuffy image size */
+  .logo-img {
+    max-width: 7rem;
+    max-height: 7rem;
+  }
+  .logo-text {
+    font-size: 3.4rem;
+  }
+  ul li {
+    font-size: 2.4rem;
+  }
+  /* FOR THE CONTAINERS */
+  .stats-container,
+  .time {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  .segment-display {
+    /* color for testing */
+    /* color: red; */
+    font-size: 2rem;
+  }
+  .settings-container {
+    text-align: center;
+    font-size: 1.8rem;
+    justify-content: space-around;
+  }
+  .segment-container {
+    display: flex;
+    min-height: 35rem;
+    max-height: 35rem;
+  }
+  .reset-button {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 1676px) {
+  /* FOR THE HEADER */
+  /* tuffy image size */
+  .logo-img {
+    max-width: 6rem;
+    max-height: 6rem;
+  }
+  /* header font sizes */
+  .logo-text {
+    font-size: 3.2rem;
+  }
+  ul li {
+    font-size: 2.2rem;
+  }
+  /* FOR THE CONTAINERS */
+  /* time text size/centering */
+  .stats-container,
+  .time {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  /* quote/words text size */
+  .segment-display {
+    /* color for testing */
+    /* color: blue; */
+    font-size: 1.6rem;
+  }
+  /* centering items in settings container */
+  .settings-container {
+    text-align: center;
+    font-size: 1.4rem;
+    justify-content: space-around;
+  }
+  /* setting min height for quotes/segment container */
+  .segment-container {
+    display: flex;
+    min-height: 30rem;
+    max-height: 30rem;
+  }
+  /* for restart button size */
+  .reset-button {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 1376px) {
+  /* FOR THE HEADER */
+  /* tuffy image size */
+  .logo-img {
+    max-width: 5rem;
+    max-height: 5rem;
+  }
+  /* header font sizes */
+  .logo-text {
+    font-size: 3rem;
+  }
+  ul li {
+    font-size: 2rem;
+  }
+  /* FOR THE CONTAINERS */
+  /* changing direction from row to column of the entire testing module */
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    min-height: 0rem;
+  }
+  /* changing direction of the specific modules in the testing module to a direction of row */
+  .stats-container,
+  .segment-container,
+  .settings-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+    min-height: 0rem;
+  }
+  /* for the text-size of the orange stats */
+  .module h3 {
+    font-size: 1.7rem;
+  }
+  .stats-container,
+  .time {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  .segment-display {
+    /* color for testing */
+    /* color: blueviolet; */
+    font-size: 1.4rem;
+  }
+  .settings-container {
+    text-align: center;
+    font-size: 1.5rem;
+    justify-content: space-around;
+  }
+  .segment-container {
+    display: flex;
+  }
+  /* for restart button size */
+  .reset-button {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 1076px) {
+  /* FOR THE ABOUT PAGE */
+  .about-container {
+    padding: 0.7em;
+    font-size: 1.3rem;
+  }
+  /* FOR THE HEADER */
+  /* tuffy image size */
+  .logo-img {
+    max-width: 4rem;
+    max-height: 4rem;
+  }
+  /* header font sizes */
+  .logo-text {
+    font-size: 2rem;
+  }
+  ul li {
+    font-size: 2rem;
+  }
+  /* FOR THE CONTAINERS */
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    min-height: 0rem;
+  }
+  .stats-container,
+  .segment-container,
+  .settings-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+    padding: 1em;
+    min-height: 0rem;
+  }
+  /* for the text-size of the orange stats */
+  .module h3 {
+    font-size: 1.2rem;
+  }
+  .stats-container,
+  .time {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .segment-display {
+    /* color for testing */
+    /* color: rgb(51, 252, 32); */
+    font-size: 1.2rem;
+  }
+  .settings-container {
+    text-align: center;
+    font-size: 1rem;
+    justify-content: space-around;
+  }
+  .segment-container {
+    display: flex;
+  }
+  /* for restart button size */
+  .reset-button {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 676px) {
+  /* FOR THE ABOUT PAGE */
+  .about-container {
+    padding: 0.7em;
+    font-size: 1.1rem;
+  }
+  /* FOR THE HEADER */
+  /* tuffy image size */
+  .logo-img {
+    max-width: 3rem;
+    max-height: 3rem;
+  }
+  /* header font sizes */
+  .logo-text {
+    font-size: 1.6rem;
+  }
+  ul li {
+    font-size: 1.6rem;
+  }
+  /* FOR THE CONTAINERS */
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    min-height: 0rem;
+  }
+  .stats-container,
+  .segment-container,
+  .settings-container {
+    padding: 1.2em;
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+    min-height: 0rem;
+  }
+  .module h3 {
+    font-size: 0.9rem;
+  }
+  .stats-container,
+  .time {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  .segment-display {
+    /* color for testing */
+    /* color: rgb(255, 0, 179); */
+    font-size: 1rem;
+  }
+  .settings-container {
+    text-align: center;
+    font-size: 0.9rem;
+    justify-content: space-around;
+  }
+  .segment-container {
+    display: flex;
+  }
+  /* for restart button size */
+  .reset-button {
+    font-size: 2rem;
   }
 }
