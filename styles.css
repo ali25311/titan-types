@@ -440,7 +440,7 @@ select {
   }
 }
 
-@media only screen and (max-width: 1676px) {
+@media only screen and (max-width: 1576px) {
   /* FOR THE HEADER */
   /* tuffy image size */
   .logo-img {
@@ -485,7 +485,7 @@ select {
   }
 }
 
-@media only screen and (max-width: 1376px) {
+@media only screen and (max-width: 1176px) {
   /* FOR THE HEADER */
   /* tuffy image size */
   .logo-img {
@@ -544,7 +544,7 @@ select {
   }
 }
 
-@media only screen and (max-width: 1076px) {
+@media only screen and (max-width: 976px) {
   /* FOR THE ABOUT PAGE */
   .about-container {
     padding: 0.7em;
@@ -607,7 +607,7 @@ select {
   }
 }
 
-@media only screen and (max-width: 676px) {
+@media only screen and (max-width: 576px) {
   /* FOR THE ABOUT PAGE */
   .about-container {
     padding: 0.7em;
