@@ -485,6 +485,51 @@ select {
   }
 }
 
+@media only screen and (max-width: 1376px) {
+  /* FOR THE HEADER */
+  /* tuffy image size */
+  .logo-img {
+    max-width: 6rem;
+    max-height: 6rem;
+  }
+  /* header font sizes */
+  .logo-text {
+    font-size: 3.2rem;
+  }
+  ul li {
+    font-size: 2.2rem;
+  }
+  /* FOR THE CONTAINERS */
+  /* time text size/centering */
+  .stats-container,
+  .time {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  /* quote/words text size */
+  .segment-display {
+    /* color for testing */
+    /* color: blue; */
+    font-size: 1.4rem;
+  }
+  /* centering items in settings container */
+  .settings-container {
+    text-align: center;
+    font-size: 1.5rem;
+    justify-content: space-around;
+  }
+  /* setting min height for quotes/segment container */
+  .segment-container {
+    display: flex;
+    min-height: 30rem;
+    max-height: 30rem;
+  }
+  /* for restart button size */
+  .reset-button {
+    font-size: 3rem;
+  }
+}
+
 @media only screen and (max-width: 1176px) {
   /* FOR THE HEADER */
   /* tuffy image size */
@@ -518,27 +563,27 @@ select {
   }
   /* for the text-size of the orange stats */
   .module h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .stats-container,
   .time {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .segment-display {
     /* color for testing */
     /* color: blueviolet; */
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .settings-container {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     justify-content: space-around;
   }
   .segment-container {
     display: flex;
-    min-height: 10rem;
-    max-height: 10rem;
+    min-height: 9rem;
+    max-height: 9rem;
   }
   /* for restart button size */
   .reset-button {
