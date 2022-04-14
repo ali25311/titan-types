@@ -72,15 +72,15 @@ header {
 }
 
 /* Logo for the header(Titans Logo) */
-/* .logo-img {
+.logo-img {
   max-width: 7rem;
   max-height: 7rem;
-} */
+}
 
 /* For the text next to the logo on the header "Titan Types" */
 .logo-text {
   font-weight: 600;
-  /* font-size: 3.4rem; */
+  font-size: 3.4rem;
   letter-spacing: 0.01em;
 }
 
