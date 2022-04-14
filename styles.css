@@ -5,6 +5,24 @@
 * Browsers: last 4 version
 */
 
+/* Creating variables for default colors for CSUF/Titan Types */
+ :root {
+   /* var(--main-blue); */
+   --main-blue: #00274c;
+
+   /* var(--secondary-blue); */
+   --secondary-blue: #023662;
+   
+   /* var(--tertiary-blue); */
+   --tertiary-blue: #074783;
+   
+   /* var(--main-orange); */
+   --main-orange: #ff8800;
+
+
+ }
+
+
 /* Start of Stephen's CSS for root/nav/header */
 * {
   margin: 0;
@@ -16,7 +34,7 @@
 
 /* Settings for background image of website */
 body {
-  background-color: #00274c;
+  background-color: var(--main-blue);
   background-image: url("assets/background-1.jpg");
   /* ensure background is one fixed iamge on the site and covers the entire background */
   background-repeat: no-repeat;
@@ -26,35 +44,25 @@ body {
 
 /* The main div for the header of the website */
 header {
-  background: #00274c;
-  /* min-height: 7.5rem;
-  max-height: 7.5rem; */
-  /* takes up the full width of the screen */
+  background: var(--main-blue);
+  min-height: 5.5rem;
+  max-height: 5.5rem;
   width: 100%;
-  /* creating small space around content inside header */
-  padding: 0.15em 0;
-  /* creating space outside the header at the bottom (where it ends)*/
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 
-/* All things generaeted by the PostCSS Autoprefixer */
 .heading-content-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   color: white;
-  width: 90%;
+  width: 95%;
   margin: auto;
+  min-height: 5.5rem;
+  max-height: 5.5rem;
 }
 
 /* generated PostCSS Autoprefixer */
@@ -62,26 +70,24 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 /* Logo for the header(Titans Logo) */
 .logo-img {
-  max-width: 7rem;
-  max-height: 7rem;
+  max-width: 6rem;
+  max-height: 6rem;
+  margin-top: 1.5em;
+  margin-right: 0.5em;
 }
 
 /* For the text next to the logo on the header "Titan Types" */
 .logo-text {
   font-weight: 600;
-  font-size: 3.4rem;
-  letter-spacing: 0.01em;
+  /* font-size for "TitanTypes" on the header*/
+  font-size: 2.95rem;
+  letter-spacing: 0.02em;
 }
 
 /* generated PostCSS Autoprefixer */
@@ -90,16 +96,13 @@ nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
+  font-size: 1.25rem;
 }
 
 /* Removing default styling for HTML lists */
 ul li {
   list-style: none;
-  /* font-size: 2.4rem; */
   cursor: pointer;
   font-weight: 600;
 }
@@ -109,23 +112,25 @@ ul li:first-of-type {
 }
 
 ul li:hover {
-  color: #ff9c2b;
+  color: var(--main-orange);
 }
-/* End of Stephen's CSS for root/nav/header */
 
-/* Changing default styling for links in the header */
 li a {
   text-decoration: none;
   color: white;
 }
 /* Changing color of links in header to a different one */
 li a:hover {
-  color: #ff9c2b;
+  color: var(--main-orange);
 }
 /* Changing color of link of the current page*/
 .current-page {
-  color: #ff9c2b;
+  color: var(--main-orange);
 }
+
+/* End of Stephen's CSS for root/nav/header */
+
+
 
 /* Centering the main module of the website  */
 /* contains: segment, stats, testing & settings containers */
@@ -133,108 +138,88 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 /* The module for holding the 3 main modules of the typing website */
 /* inside: test container, stats container & segment container */
 .test-container {
-  min-width: 95%;
-  max-width: 95%;
-  background-color: #00274c;
-  line-height: 2;
-  padding: 2em 2em;
-  display: -ms-inline-grid;
-  /* Turning the container into a CSS (on one line) grid for easier setup of the stats. */
-  display: inline-grid;
-  -ms-grid-columns: 15em 50px auto 50px 15em;
-  grid-template-columns: 15em auto 15em;
-  -webkit-column-gap: 50px;
-  -moz-column-gap: 50px;
-  column-gap: 50px;
+  min-width: 90%;
+  max-width: 90%;
+  background-color: var(--main-blue);
+  min-height: 25rem;
+  max-height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
 }
 
 /* Div/Container that contains the display for the stats of the typing test */
 /* inside: seconds remaining, word-count & accuracy  */
 .stats-container {
-  background-color: rgba(14, 147, 224, 0.144);
-  text-align: right;
+  background-color: var(--secondary-blue);
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  /* Turning the container into a flexbox for RWD purposes. */
+  width: 15%;
+  min-height: 23rem;
+  max-height: 23rem;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  /* Turning the container into a flexbox for RWD purposes. */
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  /* font-size: 1.5rem; */
+  padding: 0.2em;
+}
+
+.test-container h2 {
+  font-size: 1.6rem;
+  text-align: center;
 }
 
 /* Setting text size, position & color in the stats container.  */
-main h3 {
+.test-container h3 {
   text-align: center;
-  color: chocolate;
-  font-size: 2rem;
+  color: var(--main-orange);
+  font-size: 1.55rem;
 }
-/* Setting text size for time portion of stats container */
-.time {
-  font-size: 1.5rem;
-}
+
 
 /* Div/Container that displays the quote/words that the user must type.*/
 .segment-container {
-  background-color: rgba(14, 147, 224, 0.144);
+  background-color: var(--secondary-blue);
   padding: 1em;
-  color: #ff9c2b;
+  color: var(--main-orange);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* font-size: 1.6rem; */
-  min-height: 25rem;
-  max-height: 25rem;
-  /* To make sure that text doesn't overflow out of the container/div. */
   word-wrap: break-word;
   overflow: auto;
+  width: 70%;
+  margin: 0 2em;
+  min-height: 23rem;
+  max-height: 23rem;
+  font-size: 1.35rem;
+  line-height: 1.8em;
 }
 
-/* Default font-size for the displayed quote */
-/* .segment-display {
-  font-size: 1.8rem;
-} */
+
 
 /* Div/Container that contains the display for the user settings of the typing test */
 /* inside: Duration & Type options/drop-down, Reset button */
 .settings-container {
-  /* font-size: 1.5rem; */
-  background-color: rgba(14, 147, 224, 0.144);
+  background-color: var(--secondary-blue);
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  /* Turning the container into a flexbox for RWD purposes. */
+  width: 15%;
+  min-height: 23rem;
+  max-height: 23rem;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  /* Turning the container into a flexbox for RWD purposes. */
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-evenly;
+  padding: 0.3em;
 }
 
 /* CSS for the drop-down menus in the settings module.  */
 select {
-  background-color: #074783;
-  color: #ff8800;
+  background-color: var(--tertiary-blue);
+  color: var(--main-orange);
   border: none;
   padding: 0 1em 0 0;
   margin: 0em;
@@ -243,6 +228,13 @@ select {
   font-size: inherit;
   cursor: pointer;
   line-height: inherit;
+  margin-top: 0.75em;
+}
+
+/* Div that contains the "Reset" text & reset-button */
+.reset {
+  display: flex;
+  flex-direction: column;
 }
 
 /* CSS for the Reset Button & Icon */
@@ -250,15 +242,13 @@ select {
   background-color: #ffffff00;
   border: none;
   color: #ffffff;
-  /* padding: 22px 22px; */
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  /* font-size: 3.1rem; */
+  font-size: 2.75rem;
 }
 
 .reset-button:hover {
-  color: #ff8800;
+  color: var(--main-orange);
   cursor: pointer;
 }
 
@@ -267,59 +257,8 @@ select {
   animation: blink 0.8s linear alternate infinite;
 }
 
-/* CSS for the About page of the website */
-.about-container {
-  padding: 1em;
-  font-size: 1.5rem;
-  max-width: 100%;
-  background-color: #00274c;
-  line-height: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  /* using flexbox for easier RWD setup */
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  /* setting the about container in a column layout */
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  /* centering items in the about page module */
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  /* centering items in the about page module */
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
-/* setting colors in about page & spacing */
-.about {
-  border: medium solid #ff8800;
-  padding: 1em;
-}
 
-.github-body-container {
-  margin: 1em;
-  padding: 1em;
-  border: medium solid #ff8800;
-}
 
-.about-heading,
-.github-heading {
-  color: #ff8800;
-}
-
-/* For the Github link on the About page */
-.learn-more a {
-  text-decoration: none;
-  color: white;
-}
-
-.learn-more a:hover {
-  color: #ff8800;
-}
 
 /* Modal Styling (CSS for the end screen stats module) */
 /* positioning of the modal */
@@ -342,11 +281,12 @@ select {
 /* styling and sizing the actual modal, setting up font & colors/borders */
 #status-modal {
   width: 50%;
-  height: 30rem;
-  background-color: #00274c;
+  min-height: 25rem;
+  max-height: 25rem;
+  background-color: var(--main-blue);
   font-family: "Lora", sans-serif;
   border-radius: 1em;
-  border: 4px solid #ff9c2b;
+  border: 4px solid var(--main-orange);
 }
 
 #modal-heading-container {
@@ -355,17 +295,16 @@ select {
 
 #modal-heading {
   text-align: center;
-  font-size: 3.5rem;
-  color: #ff9c2b;
-  margin-bottom: 0.5em;
-  padding-bottom: 0.15em;
-  border-bottom: 4px solid #ff9c2b;
+  font-size: 2.25rem;
+  color: var(--main-orange);
+  padding: 0.25em 0;
+  border-bottom: 4px solid var(--main-orange);
 }
 
 #exit-box {
   position: absolute;
-  top: 0.3em;
-  right: 0.3em;
+  top: 0.5em;
+  right: 0.5em;
   color: #ffffff;
   font-weight: 600;
   font-size: 1.55rem;
@@ -373,17 +312,21 @@ select {
 }
 
 #exit-box:hover {
-  color: #ff8800;
+  color: var(--main-orange);
   cursor: pointer;
 }
 
 #stats-body {
   margin: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #stats-body h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-top: 0.75em;
   font-weight: 700;
   color: #ffffff;
@@ -399,319 +342,26 @@ select {
   }
 }
 
+/* Custom Styling for Scroll bar */
+ /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--main-orange);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--tertiary-blue);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tertiary-blue);
+}
+/* end of custom styling for scroll bar */
+
 /* ALL MEDIA QUERIES BELOW */
-
-@media only screen and (max-width: 2476px) {
-  /* FOR THE HEADER */
-  /* tuffy image size */
-  .logo-img {
-    max-width: 7rem;
-    max-height: 7rem;
-  }
-  .logo-text {
-    font-size: 3.4rem;
-  }
-  ul li {
-    font-size: 2.4rem;
-  }
-  /* FOR THE CONTAINERS */
-  .stats-container,
-  .time {
-    text-align: center;
-    font-size: 1.8rem;
-  }
-  .segment-display {
-    /* color for testing */
-    /* color: red; */
-    font-size: 2rem;
-  }
-  .settings-container {
-    text-align: center;
-    font-size: 1.8rem;
-    justify-content: space-around;
-  }
-  .segment-container {
-    display: flex;
-    min-height: 35rem;
-    max-height: 35rem;
-  }
-  .reset-button {
-    font-size: 3.5rem;
-  }
-}
-
-@media only screen and (max-width: 1876px) {
-  /* FOR THE HEADER */
-  /* tuffy image size */
-  .logo-img {
-    max-width: 6rem;
-    max-height: 6rem;
-  }
-  /* header font sizes */
-  .logo-text {
-    font-size: 3.2rem;
-  }
-  ul li {
-    font-size: 2.2rem;
-  }
-  /* FOR THE CONTAINERS */
-  /* time text size/centering */
-  .stats-container,
-  .time {
-    text-align: center;
-    font-size: 1.5rem;
-  }
-  /* quote/words text size */
-  .segment-display {
-    /* color for testing */
-    /* color: blue; */
-    font-size: 1.6rem;
-  }
-  /* centering items in settings container */
-  .settings-container {
-    text-align: center;
-    font-size: 1.5rem;
-    justify-content: space-around;
-  }
-  /* setting min height for quotes/segment container */
-  .segment-container {
-    display: flex;
-    min-height: 35rem;
-    max-height: 35rem;
-  }
-  /* for restart button size */
-  .reset-button {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (max-width: 1376px) {
-  /* FOR THE HEADER */
-  /* tuffy image size */
-  .logo-img {
-    max-width: 6rem;
-    max-height: 6rem;
-  }
-  /* header font sizes */
-  .logo-text {
-    font-size: 3.2rem;
-  }
-  ul li {
-    font-size: 2.2rem;
-  }
-  /* FOR THE CONTAINERS */
-  /* time text size/centering */
-  .stats-container,
-  .time {
-    text-align: center;
-    font-size: 1.5rem;
-  }
-  /* quote/words text size */
-  .segment-display {
-    /* color for testing */
-    /* color: blue; */
-    font-size: 1.4rem;
-  }
-  /* centering items in settings container */
-  .settings-container {
-    text-align: center;
-    font-size: 1.5rem;
-    justify-content: space-around;
-  }
-  /* setting min height for quotes/segment container */
-  .segment-container {
-    display: flex;
-    min-height: 30rem;
-    max-height: 30rem;
-  }
-  /* for restart button size */
-  .reset-button {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (max-width: 1176px) {
-  /* FOR THE HEADER */
-  /* tuffy image size */
-  .logo-img {
-    max-width: 5rem;
-    max-height: 5rem;
-  }
-  /* header font sizes */
-  .logo-text {
-    font-size: 3rem;
-  }
-  ul li {
-    font-size: 2rem;
-  }
-  /* FOR THE CONTAINERS */
-  /* changing direction from row to column of the entire testing module */
-  .test-container {
-    display: flex;
-    flex-direction: column;
-    margin: 1em;
-    min-height: 0rem;
-  }
-  /* changing direction of the specific modules in the testing module to a direction of row */
-  .stats-container,
-  .segment-container,
-  .settings-container {
-    display: flex;
-    flex-direction: row;
-    margin: 1em;
-    min-height: 0rem;
-  }
-  /* for the text-size of the orange stats */
-  .module h3 {
-    font-size: 1.2rem;
-  }
-  .stats-container,
-  .time {
-    text-align: center;
-    font-size: 1.2rem;
-  }
-  .segment-display {
-    /* color for testing */
-    /* color: blueviolet; */
-    font-size: 1rem;
-  }
-  .settings-container {
-    text-align: center;
-    font-size: 1.2rem;
-    justify-content: space-around;
-  }
-  .segment-container {
-    display: flex;
-    min-height: 9rem;
-    max-height: 9rem;
-  }
-  /* for restart button size */
-  .reset-button {
-    font-size: 2.3rem;
-  }
-}
-
-@media only screen and (max-width: 976px) {
-  /* FOR THE ABOUT PAGE */
-  .about-container {
-    padding: 0.7em;
-    font-size: 1rem;
-  }
-  /* FOR THE HEADER */
-  /* tuffy image size */
-  .logo-img {
-    max-width: 3.5rem;
-    max-height: 3.5rem;
-  }
-  /* header font sizes */
-  .logo-text {
-    font-size: 1.2rem;
-  }
-  ul li {
-    font-size: 1.2rem;
-  }
-  /* FOR THE CONTAINERS */
-  .test-container {
-    display: flex;
-    flex-direction: column;
-    margin: 1em;
-    min-height: 0rem;
-  }
-  .stats-container,
-  .segment-container,
-  .settings-container {
-    display: flex;
-    flex-direction: row;
-    margin: 1em;
-    padding: 1em;
-    min-height: 0rem;
-  }
-  /* for the text-size of the orange stats */
-  .module h3 {
-    font-size: 0.8rem;
-  }
-  .stats-container,
-  .time {
-    text-align: center;
-    font-size: 0.8rem;
-  }
-  .segment-display {
-    /* color for testing */
-    /* color: rgb(51, 252, 32); */
-    font-size: 0.8rem;
-  }
-  .settings-container {
-    text-align: center;
-    font-size: 0.8rem;
-    justify-content: space-around;
-  }
-  .segment-container {
-    display: flex;
-  }
-  /* for restart button size */
-  .reset-button {
-    font-size: 2rem;
-  }
-}
-
-@media only screen and (max-width: 676px) {
-  /* FOR THE ABOUT PAGE */
-  .about-container {
-    padding: 0.7em;
-    font-size: 0.7rem;
-  }
-  /* FOR THE HEADER */
-  /* tuffy image size */
-  .logo-img {
-    max-width: 3rem;
-    max-height: 3rem;
-  }
-  /* header font sizes */
-  .logo-text {
-    font-size: 1.4rem;
-  }
-  ul li {
-    font-size: 1.4rem;
-  }
-  /* FOR THE CONTAINERS */
-  .test-container {
-    display: flex;
-    flex-direction: column;
-    margin: 1em;
-    min-height: 0rem;
-  }
-  .stats-container,
-  .segment-container,
-  .settings-container {
-    padding: 1.2em;
-    display: flex;
-    flex-direction: row;
-    margin: 1em;
-    min-height: 0rem;
-  }
-  .module h3 {
-    font-size: 0.5rem;
-  }
-  .stats-container,
-  .time {
-    text-align: center;
-    font-size: 0.5rem;
-  }
-  .segment-display {
-    /* color for testing */
-    /* color: rgb(255, 0, 179); */
-    font-size: 0.8rem;
-  }
-  .settings-container {
-    text-align: center;
-    font-size: 0.5rem;
-    justify-content: space-around;
-  }
-  .segment-container {
-    display: flex;
-  }
-  /* for restart button size */
-  .reset-button {
-    font-size: 2rem;
-  }
-}
