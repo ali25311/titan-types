@@ -6,22 +6,19 @@
 */
 
 /* Creating variables for default colors for CSUF/Titan Types */
- :root {
-   /* var(--main-blue); */
-   --main-blue: #00274c;
+:root {
+  /* var(--main-blue); */
+  --main-blue: #00274c;
 
-   /* var(--secondary-blue); */
-   --secondary-blue: #023662;
-   
-   /* var(--tertiary-blue); */
-   --tertiary-blue: #074783;
-   
-   /* var(--main-orange); */
-   --main-orange: #ff8800;
+  /* var(--secondary-blue); */
+  --secondary-blue: #023662;
 
+  /* var(--tertiary-blue); */
+  --tertiary-blue: #074783;
 
- }
-
+  /* var(--main-orange); */
+  --main-orange: #ff8800;
+}
 
 /* Start of Stephen's CSS for root/nav/header */
 * {
@@ -130,8 +127,6 @@ li a:hover {
 
 /* End of Stephen's CSS for root/nav/header */
 
-
-
 /* Centering the main module of the website  */
 /* contains: segment, stats, testing & settings containers */
 main {
@@ -182,7 +177,6 @@ main {
   font-size: 1.55rem;
 }
 
-
 /* Div/Container that displays the quote/words that the user must type.*/
 .segment-container {
   background-color: var(--secondary-blue);
@@ -198,8 +192,6 @@ main {
   font-size: 1.35rem;
   line-height: 1.8em;
 }
-
-
 
 /* Div/Container that contains the display for the user settings of the typing test */
 /* inside: Duration & Type options/drop-down, Reset button */
@@ -256,9 +248,6 @@ select {
   border-bottom: 0.15em solid #000000;
   animation: blink 0.8s linear alternate infinite;
 }
-
-
-
 
 /* Modal Styling (CSS for the end screen stats module) */
 /* positioning of the modal */
@@ -343,7 +332,7 @@ select {
 }
 
 /* Custom Styling for Scroll bar */
- /* width */
+/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -365,3 +354,129 @@ select {
 /* end of custom styling for scroll bar */
 
 /* ALL MEDIA QUERIES BELOW */
+@media only screen and (max-width: 700px) {
+  /* CSS apply on width between 0 and 700px */
+  header {
+    min-height: 4.5rem;
+    max-height: 4.5rem;
+    margin-bottom: 2em;
+  }
+  .logo-img {
+    max-width: 4rem;
+    max-height: 4rem;
+    margin-top: 1em;
+    margin-right: 1em;
+  }
+  .logo-text {
+    /* font-size for "TitanTypes" on the header*/
+    font-size: 1.75rem;
+  }
+  nav ul {
+    font-size: 1.15rem;
+  }
+  .test-container {
+    font-size: 0.7rem;
+    min-height: 35rem;
+    /* max-height: 25rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .stats-container {
+    margin: 0em;
+    min-height: 0rem;
+    width: 90%;
+    flex-direction: row;
+  }
+  .module h2,
+  .module h3 {
+    font-size: 1.2rem;
+  }
+  .segment-container {
+    width: 90%;
+    font-size: 1rem;
+    min-height: 0rem;
+  }
+  .settings-container {
+    flex-direction: row;
+    font-size: 1rem;
+    margin: 0em;
+    min-height: 0rem;
+    width: 90%;
+  }
+}
+
+@media screen and (min-device-width: 701px) and (max-device-width: 1000px) {
+  /* CSS apply on width between 701 and 1000px*/
+  header {
+    min-height: 6rem;
+    max-height: 6rem;
+    margin-bottom: 3em;
+  }
+  .logo-img {
+    max-width: 6rem;
+    max-height: 6rem;
+    margin-top: 2em;
+    margin-right: 1.2em;
+  }
+  .test-container {
+    width: 100%;
+    font-size: 0.8rem;
+    min-height: 30rem;
+    max-height: 30rem;
+  }
+  /* for the text in the left stats container */
+  .module h2,
+  .module h3 {
+    font-size: 1rem;
+  }
+  .settings-container,
+  .settings-container h2 {
+    font-size: 1rem;
+  }
+  /* for the drop-down menu text on the right/settings container */
+  #duration,
+  #test-type {
+    font-size: 0.8rem;
+  }
+  .segment-container {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  /* CSS apply on width above 1600px */
+  header {
+    min-height: 6.5rem;
+    max-height: 6.5rem;
+    margin-bottom: 3em;
+  }
+  .logo-img {
+    max-width: 7rem;
+    max-height: 7rem;
+    margin-top: 2.5em;
+    margin-right: 1.5em;
+  }
+  .logo-text {
+    /* font-size for "TitanTypes" on the header*/
+    font-size: 3.95rem;
+    letter-spacing: 0.02em;
+  }
+  nav ul {
+    font-size: 1.45rem;
+  }
+  .test-container {
+    min-height: 30rem;
+    max-height: 30rem;
+  }
+  .segment-container {
+    min-height: 24rem;
+    max-height: 24rem;
+    font-size: 1.45rem;
+  }
+  .settings-container {
+    min-height: 24rem;
+    max-height: 24rem;
+  }
+}
