@@ -27,7 +27,7 @@
 /* Settings for background image of website */
 body {
   background-color: var(--main-blue);
-  background-image: url("assets/background-1.jpg");
+  background-image: url("assets/primary_background.jpg");
   /* ensure background is one fixed iamge on the site and covers the entire background */
   background-repeat: no-repeat;
   background-attachment: fixed;
