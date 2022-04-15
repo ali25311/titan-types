@@ -89,7 +89,7 @@ nav ul {
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
 }
 
 /* Removing default styling for HTML lists */
@@ -129,7 +129,7 @@ li a:hover {
 /* CSS for the About page of the website */
 .about-container {
   padding: 1em;
-  max-width: 60%;
+  width: 60%;
   margin: auto;
   background-color: var(--main-blue);
   line-height: 2;
@@ -175,4 +175,76 @@ li a:hover {
 
 .learn-more a:hover {
   color: var(--main-orange);
+}
+
+
+
+/* ALL MEDIA QUERIES BELOW */
+@media only screen and (max-width: 700px) {
+  /* CSS apply on width between 0 and 700px */
+  header {
+    min-height: 4.5rem;
+    max-height: 4.5rem;
+    margin-bottom: 2em;
+  }
+  .logo-img {
+    max-width: 4rem;
+    max-height: 4rem;
+    margin-top: 1em;
+    margin-right: 1em;
+  }
+  .logo-text {
+    /* font-size for "TitanTypes" on the header*/
+    font-size: 1.75rem;
+  }
+  nav ul {
+    font-size: 1.15rem;
+  }
+
+  .about-container {
+    width: 80%;
+  }
+}
+
+@media screen and (min-device-width: 701px) and (max-device-width: 1000px) {
+  /* CSS apply on width between 701 and 1000px*/
+  header {
+    min-height: 6rem;
+    max-height: 6rem;
+    margin-bottom: 3em;
+  }
+
+  .logo-img {
+    max-width: 6rem;
+    max-height: 6rem;
+    margin-top: 2em;
+    margin-right: 1.2em;
+  }
+
+  .about-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  /* CSS apply on width above 1600px */
+  header {
+    min-height: 6.5rem;
+    max-height: 6.5rem;
+    margin-bottom: 3em;
+  }
+  .logo-img {
+    max-width: 7rem;
+    max-height: 7rem;
+    margin-top: 2.5em;
+    margin-right: 1.5em;
+  }
+  .logo-text {
+    /* font-size for "TitanTypes" on the header*/
+    font-size: 3.95rem;
+    letter-spacing: 0.02em;
+  }
+  nav ul {
+    font-size: 1.45rem;
+  }
 }
