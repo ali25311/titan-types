@@ -276,6 +276,7 @@ $(document).ready(function () {
         updatePosition(2);
       }
     }
+    updateStats();
   });
 
   // Function to calculate the WPM and return its value
