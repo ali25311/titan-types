@@ -32,19 +32,19 @@ $(document).ready(function () {
   let characterCount = 0; // The number of characters the user has typed
   let secondsRemaining = 60; // The seconds remaining in the current match
   let secondsDuration = 0; // The length of the session (value from dropdown)
-  let currentIndex = 0; // The user's current position in the typing test (index)
+  let currentIndex = 0; // The user's current position in the typing test
   let segmentEl = $('#test-segment'); // The region where quotes/words go
   let timerEl = $('#timer-val'); // The timer element
   let wordCountEl = $('#word-count-val'); // The word count
   let accuracyEl = $('#accuracy-val'); // The accuracy percentage
-  let testContent = ''; // String intermediary to store generated quotes/words.
+  let testContent = ''; // String intermediary to store generated quotes/words
   let state = 'words'; // State of the match (quotes mode or words mode)
   let sessionStarted = false;
   let sessionEnded = false; // Track if the session is still going
 
   // MODAL VARIABLES
   let finalWpmEl = $('#final-wpm'); // WPM in status modal
-  let finalWordsTypedEl = $('#final-words-typed'); // Word count in status modal
+  let finalWordsTypedEl = $('#final-words-typed'); // Status modal word count
   let finalCharactersEl = $('#final-characters'); // Status modal char count
   let finalErrorsEl = $('#final-errors'); // Status modal error count
   let finalAccuracyEl = $('#final-accuracy'); // Status modal acc. %
