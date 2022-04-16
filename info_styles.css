@@ -6,22 +6,21 @@
 */
 
 /* Creating variables for default colors for CSUF/Titan Types */
- :root {
-   /* var(--main-blue); */
-   --main-blue: #00274c;
-   --secondary-blue: #074783;
-   /* var(--main-orange); */
-   --main-orange: #ff8800;
- }
-
+:root {
+  /* var(--main-blue); */
+  --main-blue: #00274c;
+  --secondary-blue: #074783;
+  /* var(--main-orange); */
+  --main-orange: #ff8800;
+}
 
 /* Start of Stephen's CSS for root/nav/header */
 * {
+  box-sizing: border-box;
+  font-family: "Lora", serif;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: "Lora", serif;
 }
 
 /* Settings for background image of website */
@@ -34,36 +33,37 @@ body {
   background-size: cover;
 }
 
+/* CSS FOR HEADER/NAV */
 /* The main div for the header of the website */
 header {
   background: var(--main-blue);
-  min-height: 5.5rem;
-  max-height: 5.5rem;
-  width: 100%;
   margin-bottom: 2em;
+  max-height: 5.5rem;
+  min-height: 5.5rem;
+  width: 100%;
 }
 
 .heading-content-container {
+  align-items: center;
+  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  align-items: center;
-  color: white;
-  width: 95%;
+  justify-content: space-between;
   margin: auto;
-  min-height: 5.5rem;
   max-height: 5.5rem;
+  min-height: 5.5rem;
+  width: 95%;
 }
 
 /* generated PostCSS Autoprefixer */
 .logo-wrapper {
+  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 /* Logo for the header(Titans Logo) */
@@ -76,9 +76,9 @@ header {
 
 /* For the text next to the logo on the header "Titan Types" */
 .logo-text {
+  font-size: 2.95rem;
   font-weight: 600;
   /* font-size for "TitanTypes" on the header*/
-  font-size: 2.95rem;
   letter-spacing: 0.02em;
 }
 
@@ -94,9 +94,9 @@ nav ul {
 
 /* Removing default styling for HTML lists */
 ul li {
-  list-style: none;
   cursor: pointer;
   font-weight: 600;
+  list-style: none;
 }
 
 ul li:first-of-type {
@@ -108,9 +108,9 @@ ul li:hover {
 }
 
 li a {
+  color: white;
   font-weight: bolder;
   text-decoration: none;
-  color: white;
 }
 /* Changing color of links in header to a different one */
 li a:hover {
@@ -123,36 +123,32 @@ li a:hover {
 
 /* End of Stephen's CSS for root/nav/header */
 
-
-
-
 /* CSS for the About page of the website */
 .about-container {
-  padding: 1em;
-  width: 60%;
-  margin: auto;
+  align-items: center;
   background-color: var(--main-blue);
-  line-height: 2;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  color: white;
+  line-height: 2;
+  margin: auto;
   margin-bottom: 2em;
+  padding: 1em;
+  text-align: center;
+  width: 60%;
 }
-
 
 /* setting colors in about page & spacing */
 .about {
   border-bottom: 2px solid var(--main-orange);
-  width: 100%;
   padding-bottom: 1em;
+  width: 100%;
 }
 
 .github-body-container {
-  width: 100%;
   padding: 0.25em;
+  width: 100%;
 }
 
 .about-heading,
@@ -161,31 +157,29 @@ li a:hover {
   font-size: 2rem;
 }
 
-.about-body-container, 
+.about-body-container,
 .github-body-container {
   font-size: 1.2rem;
 }
 
 /* For the Github link on the About page */
 .learn-more a {
+  color: white;
   font-weight: bolder;
   text-decoration: underline;
-  color: white;
 }
 
 .learn-more a:hover {
   color: var(--main-orange);
 }
 
-
-
 /* ALL MEDIA QUERIES BELOW */
 @media only screen and (max-width: 700px) {
   /* CSS apply on width between 0 and 700px */
   header {
-    min-height: 4.5rem;
-    max-height: 4.5rem;
     margin-bottom: 2em;
+    max-height: 4.5rem;
+    min-height: 4.5rem;
   }
   .logo-img {
     max-width: 4rem;
