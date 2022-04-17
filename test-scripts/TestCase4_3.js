@@ -1,28 +1,26 @@
-﻿function Test9()
+﻿function Test6()
 {
   //Opens the specified URL in a running instance of the specified browser.
   Browsers.Item(btEdge).Navigate("https://titan-types-finalized-testing-environment.vercel.app/");
   Aliases.browser3.BrowserWindow.Maximize();
-  //Enters '![ReleaseLast]' in the 'textnodeTitantypes' object.
-  Aliases.browser3.pageTitantypes.textnodeTitantypes.Keys("![ReleaseLast]");
-  //Clicks the 'panel' control.
-  Aliases.browser3.pageTitantypes.panel.Click();
-  //Enters 'It is impossible to escape the impression' in the 'textnodeTitantypes' object.
-  Aliases.browser3.pageTitantypes.textnodeTitantypes.Keys("It is impossible to escape the impression");
-  //Checks whether the 'Enabled' property of the Aliases.browser.pageTitantypes object equals True.
-  aqObject.CheckProperty(Aliases.browser.pageTitantypes, "Enabled", cmpEqual, true);
-  //Clicks the 'textnodeP2' control.
-  Aliases.browser3.pageTitantypes.textnodeP2.Click();
-  //Enters ' that people commonly use false standards of mesa[BS][BS]asurement' in the 'textnodeTitantypes' object.
-  Aliases.browser3.pageTitantypes.textnodeTitantypes.Keys(" that people commonly use false standards of mesa[BS][BS]asurement");
-  //Clicks the 'panelTitantypes' control.
-  Aliases.browser3.pageTitantypes.panelTitantypes.Click();
+  //Clicks the 'textnodeT2' control.
+  Aliases.browser3.pageTitantypes.textnodeT2.Click();
+  //Enters 'T[BS]' in the 'textnodeTitantypes' object.
+  Aliases.browser3.pageTitantypes.textnodeTitantypes.Keys("T[BS]");
+  //Checks whether the 'contentText' property of the Aliases.browser.pageTitantypes.FindElement("#modal-overlay") object equals 'Cumulative Statistics
+  //×
+  //WPM: 0
+  //Words Typed: 0
+  //Characters Typed: 0
+  //Errors: 0
+  //Accuracy: 0.00%'.
+  aqObject.CheckProperty(Aliases.browser.pageTitantypes.FindElement("#modal-overlay"), "contentText", cmpEqual, "Cumulative Statistics\n×\nWPM: 0\nWords Typed: 0\nCharacters Typed: 0\nErrors: 0\nAccuracy: 0.00%");
   //Checks whether the 'contentText' property of the Aliases.browser.pageTitantypes.FindElement("#status-modal") object equals 'Cumulative Statistics
   //×
-  //WPM: 19
-  //Words Typed: 15
-  //Characters Typed: 97
+  //WPM: 0
+  //Words Typed: 0
+  //Characters Typed: 0
   //Errors: 0
-  //Accuracy: 100.00%'.
-  aqObject.CheckProperty(Aliases.browser.pageTitantypes.FindElement("#status-modal"), "contentText", cmpEqual, "Cumulative Statistics\n×\nWPM: 19\nWords Typed: 15\nCharacters Typed: 97\nErrors: 0\nAccuracy: 100.00%");
+  //Accuracy: 0.00%'.
+  aqObject.CheckProperty(Aliases.browser.pageTitantypes.FindElement("#status-modal"), "contentText", cmpEqual, "Cumulative Statistics\n×\nWPM: 0\nWords Typed: 0\nCharacters Typed: 0\nErrors: 0\nAccuracy: 0.00%");
 }
