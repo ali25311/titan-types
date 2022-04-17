@@ -403,7 +403,7 @@ $(document).ready(function () {
     secondsRemaining = secondsDuration;
 
     // Set the text of our timer to be whatever the duration is of our test
-    timerEl.text(secondsRemaining.toString())
+    timerEl.text(secondsRemaining.toString());
   }
   
   // Set up the session of the test upon loading of the document/page.
