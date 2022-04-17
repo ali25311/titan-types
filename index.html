@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-
+    
     <!-- Google Font Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,19 +22,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>TitanTypes</title>
   </head>
+
   <body>
     <header>
+      <!-- Navigation Bar content -->
       <div class="heading-content-container">
         <div class="logo-wrapper">
           <div class="img-wrapper">
+            <!-- CSUF Logo Image -->
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CSUF_Titans_Logo.svg/1200px-CSUF_Titans_Logo.svg.png"
               class="logo-img"
             />
           </div>
+          <!-- Website Name Display -->
           <h1 class="logo-text">TitanTypes</h1>
         </div>
         <nav>
+          <!-- Clickable Pages -->
           <ul>
             <li>
               <a href="index.html" class="current-page">Home</a>
@@ -65,19 +70,20 @@
             <h3 id="accuracy-val">100.00%</h3>
           </div>
         </div>
-        <!-- The test itself-->
-        <div class="segment-container">
-          <p class="segment-display" id="test-segment">
 
-          </p>
+        <!-- The typing test display container -->
+        <div class="segment-container">
+          <p class="segment-display" id="test-segment"></p>
         </div>
 
-        <!-- The settings that the user can select/adjust-->
+        <!-- The settings that the user can select/adjust -->
         <div class="settings-container">
           <div class="duration">
             <h2 class="duration">Duration</h2>
             <select name="duration" id="duration">
+              <!-- Drop down menu default -->
               <option value="111">Select Duration</option>
+              <!-- Drop down menu clickable options -->
               <option value="60">1 Minute</option>
               <option value="120">2 Minutes</option>
               <option value="180">3 Minutes</option>
@@ -86,13 +92,16 @@
           <div class="test-type">
             <h2 class="test-type">Type</h2>
             <select name="test-type" id="test-type">
+              <!-- Drop down menu default -->
               <option value="aaa">Select Type</option>
+              <!-- Drop down menu clickable options -->
               <option value="words">Words</option>
               <option value="quotes">Quotes</option>
             </select>
           </div>
           <div class="reset">
             <h2 class="reset">Reset</h2>
+            <!-- Clickable that reloads the page -->
             <button class="reset-button" onclick="window.location.reload()">
               <i class="fa fa-refresh"></i>
             </button>
@@ -100,12 +109,15 @@
         </div>
       </div>
     </main>
+
+    <!-- Pop up window with user's final results -->
     <div id="modal-overlay">
       <div id="status-modal">
         <div id="modal-heading-container">
           <h1 id="modal-heading">Cumulative Statistics</h1>
           <h3 id="exit-box" onclick="window.location.reload()">✖</h3>
         </div>
+        <!-- Stats that will be displayed on window -->
         <div id="stats-body">
           <h3 id="final-wpm">WPM: 0</h3>
           <h3 id="final-words-typed">Words Typed: 0</h3>
