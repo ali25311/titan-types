@@ -1,3 +1,9 @@
+// ==========================================================
+// Authors: Stephen Landaas, Emily Le, Ali Hussain
+// ==========================================================
+// Licensing Information: MIT License
+// ==========================================================
+
 // Constants
 const RANDOM_QUOTE_API_URL = 'https://api.quotable.io/random?minLength=200&maxLength=250';
 const RANDOM_WORDS = ('sale spokesperson rainbow reader tent mill sweat '

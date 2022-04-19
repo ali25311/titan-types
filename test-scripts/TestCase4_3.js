@@ -1,4 +1,10 @@
-﻿function TestCase4_3() {
+﻿// ==========================================================
+// Authors: Stephen Landaas, Emily Le, Ali Hussain
+// ==========================================================
+// Licensing Information: MIT License
+// ==========================================================
+
+function TestCase4_3() {
   //Opens the specified URL in a running instance of the specified browser.
   Browsers.Item(btEdge).Navigate("https://titan-types-finalized-testing-environment.vercel.app/");
   Aliases.browser.pageTitantypes.Wait();
