@@ -180,6 +180,12 @@ $(document).ready(function () {
       return;
     }
 
+    // Exit this handler and send to other handler, 
+    // since keypress handles backspaces on Safari
+    if (key.keyCode === 8) {
+      return;
+    }
+
 		// If the user hits a key and the session hasn't started, begin the timer
 		if (sessionStarted === false) {
       startTimer(); 
