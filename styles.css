@@ -430,17 +430,17 @@ select {
     margin-bottom: 2em;
   }
   .logo-img {
-    max-width: 4rem;
-    max-height: 4rem;
+    max-width: 5rem;
+    max-height: 5rem;
     margin-top: 1em;
     margin-right: 1em;
   }
   .logo-text {
     /* font-size for "TitanTypes" on the header*/
-    font-size: 1.75rem;
+    font-size: 2.15rem;
   }
   nav ul {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
   .test-container {
     -webkit-box-align: center;
@@ -458,6 +458,8 @@ select {
     -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
     min-height: 35rem;
+    min-width: 98%;
+    max-width: 98%;
   }
   .stats-container {
     -webkit-box-orient: horizontal;
@@ -489,7 +491,7 @@ select {
   }
 }
 
-@media screen and (min-device-width: 701px) and (max-device-width: 1000px) {
+@media screen and (min-width: 701px) and (max-width: 1000px) {
   /* CSS apply on width between 701 and 1000px*/
   header {
     min-height: 6rem;
@@ -506,24 +508,25 @@ select {
     font-size: 0.8rem;
     min-height: 30rem;
     max-height: 30rem;
-    width: 100%;
+    min-width: 95%;
+    max-width: 95%;
   }
   /* for the text in the left stats container */
   .module h2,
   .module h3 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   .settings-container,
   .settings-container h2 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   /* for the drop-down menu text on the right/settings container */
   #duration,
   #test-type {
-    font-size: 0.8rem;
+    font-size: 1.25rem;
   }
   .segment-container {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 }
 
