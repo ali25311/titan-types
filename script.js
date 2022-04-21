@@ -61,8 +61,47 @@ $(document).ready(function () {
 			.then((response) => response.json())
 			.then((data) => data.content)
 			.then((quote) => {
-        return quote;
+        // Ensure that we're returning a quote without special chars (em-dash)
+        let clean = cleanQuote(quote);
+				return clean;
 			});
+	}
+
+  // Returns a quote without hard-to-type characters (if present)
+	async function cleanQuote(inputQuote) {
+    let quote = inputQuote; // Potential replacement quote
+		let cleanQuote = false; // Boolean to determine if a quote is "clean"
+    let parsedQuote = null; // Placeholder for array of string chars
+
+    // While we don't have a clean quote...
+		while (!cleanQuote) {
+      // Assume that the quote is clean to start
+      cleanQuote = true;
+
+      // Parse our quote into an array of chars
+			parsedQuote = quote.split('');
+			
+      // Iterate through the entirety of the quote
+      for (let i = 0; i < parsedQuote.length; i++) {
+        // If the quote has a type-able ASCII value, go to next loop iteration
+				if (parsedQuote[i].charCodeAt() > 31 
+              && parsedQuote[i].charCodeAt() < 126) {
+          continue;
+				}
+        else {
+          // If it's not a type-able ASCII value, we don't have a clean quote
+          cleanQuote = false;
+          break;
+        }
+      }
+
+      // If the quote wasn't clean, get a new one
+      if (!cleanQuote) {
+        quote = await getRandomQuote();
+      }
+    }
+
+    return quote;
 	}
 
   // This function will generate and render the quotes in the testing section
