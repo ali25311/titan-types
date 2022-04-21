@@ -1,7 +1,7 @@
 # Authors
- Stephen Landaas
- Emily Le
- Ali Hussain
+ * Stephen Landaas
+ * Emily Le
+ * Ali Hussain
 
 # How to run TitanTypes
 
