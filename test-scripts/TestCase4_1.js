@@ -8,7 +8,7 @@ ensure that the typing test is operational and is able to
 complete its course and subsequently display the statistics 
 on a variety of different web browsers. This is test case 1, 
 in which we are checking to see if the test completes and the
- result window appears properly on Chrome.
+result window appears properly on Chrome.
 ========================================================== */
 
 function TestCase4_1() {
