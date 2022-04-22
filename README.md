@@ -9,7 +9,7 @@
 
 If you are looking at our project through VSCode and also happen to have the Live Share/Live Server extension added, you can simply open our project by  right-clicking on our "index.html" file and selecting the "Open with Live Server".
 
-Another option that we have provided for ease-of-use is to just click on the link that we have provided: [Titan Types](https:://titan-types.vercel.app/)
+Another option that we have provided for ease-of-use is to just click on the link that we have provided: [Titan Types](https://titan-types.vercel.app/)
 
 To begin after clicking the link or opening with Live Server, our web application will appear on your browser where you will be lead to our homepage. The typing test is contained within our homepage so this is what you will first see. Among the typing test, you will see "Home" and "About" on our navigation bar. If you would like, you may select the "About" option which will lead you to the page that contains information about our group. Otherwise, on the Home page, you will see two drop-down options. One of which, you may choose for the test to be 1 minute, 2 minutes, or 3 minutes in length. It is not mandatory to set as we do have it set to 1 minute by default. With the second drop-down option, you may choose whether to be tested with "Words" or "Quotes" but again, this is not mandatory as we do have it set to the quotes mode by default.
 
