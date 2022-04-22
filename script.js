@@ -1,8 +1,13 @@
-// ==========================================================
-// Authors: Stephen Landaas, Emily Le, Ali Hussain
-// ==========================================================
-// Licensing Information: MIT License
-// ==========================================================
+/* ==========================================================
+Authors: Stephen Landaas, Emily Le, Ali Hussain
+=============================================================
+Licensing Information: MIT License
+=============================================================
+Description: This corresponds to test scenario 1, where we create 
+unit tests to see if the functionality is correct with all the given 
+test reults, regarding the Restart button. This is test case 1, 
+it tests to see if the restart button is visible when the application loads.
+============================================================= */
 
 // Constants
 const RANDOM_QUOTE_API_URL = 'https://api.quotable.io/random?minLength=200&maxLength=250';
