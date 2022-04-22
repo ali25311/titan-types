@@ -3,6 +3,7 @@
 // ==========================================================
 // Licensing Information: MIT License
 // ==========================================================
+// Description: This corresponds to test scenario 2, where we check the timer functionality to ensure that selecting the different times appear properly on the application. This is test case 1, it tests to see if selecting the "1 Minute" item in the timer changes the timer to 60 seconds.
 
 function TestCase2_1() {
   //Opens the specified URL in a running instance of the specified browser.
