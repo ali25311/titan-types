@@ -3,7 +3,11 @@ Authors: Stephen Landaas, Emily Le, Ali Hussain
 ==========================================================
 Licensing Information: MIT License
 ==========================================================
-Description: This corresponds to test scenario 2, where we check the timer functionality to ensure that selecting the different times appear properly on the application. This is test case 2, it tests to see if selecting the "2 Minute" item in the timer changes the timer to 120 seconds.
+Description: This corresponds to test scenario 2, where we 
+check the timer functionality to ensure that selecting the 
+different times appear properly on the application. This is 
+test case 2, it tests to see if selecting the "2 Minute" item 
+in the timer changes the timer to 120 seconds.
 ========================================================== */
 
 function TestCase2_2() {

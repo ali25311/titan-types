@@ -3,7 +3,11 @@ Authors: Stephen Landaas, Emily Le, Ali Hussain
 ==========================================================
 Licensing Information: MIT License
 ==========================================================
-Description: This corresponds to test scenario 2, where we check the timer functionality to ensure that selecting the different times appear properly on the application. This is test case 4, in which we are checking to see if refreshing the page will keep the same time selection that was chosen.
+Description: This corresponds to test scenario 2, where we 
+check the timer functionality to ensure that selecting the 
+different times appear properly on the application. This is 
+test case 4, in which we are checking to see if refreshing the 
+page will keep the same time selection that was chosen.
 ========================================================== */
 
 function TestCase2_4() {
