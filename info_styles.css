@@ -1,10 +1,16 @@
-/*
-==========================================================
+/* ==========================================================
 Authors: Stephen Landaas, Emily Le, Ali Hussain
-==========================================================
+=============================================================
 Licensing Information: MIT License
-==========================================================
-*/
+=============================================================
+Description: This file serves as the styling for our About/Information page,
+comprising the various properties needed to give it its appearance.
+It incorporates repeat styling from our navigation, header, and root styling,
+while giving supplementary styling to the display of this page. Media queries
+are also utilized at the bottom of this file, enabling the page to respond to
+different screen sizes, and adjusts certain characteristics of the page
+accordingly, for a smoother user interface and overall responsive experience.
+============================================================= */
 
 /* Creating variables for default colors for CSUF/Titan Types */
 :root {
@@ -225,7 +231,7 @@ li a:hover {
   }
 }
 
-@media screen and (min-device-width: 701px) and (max-device-width: 1000px) {
+@media screen and (min-width: 701px) and (max-width: 1000px) {
   /* CSS apply on width between 701 and 1000px*/
   header {
     min-height: 6rem;

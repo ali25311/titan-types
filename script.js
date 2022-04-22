@@ -3,10 +3,25 @@ Authors: Stephen Landaas, Emily Le, Ali Hussain
 =============================================================
 Licensing Information: MIT License
 =============================================================
-Description: This corresponds to test scenario 1, where we create 
-unit tests to see if the functionality is correct with all the given 
-test reults, regarding the Restart button. This is test case 1, 
-it tests to see if the restart button is visible when the application loads.
+Description: This file essentially serves as the primary script 
+of our web application, incorporating all of the necessary logic
+needed for its functionality. Using jQuery, the contents are wrapped
+into a $(document).ready() function, which contains the necessary
+variables needed for the application. This script is broken down
+into a multitude of functions, each function having a specific purpose,
+with his purpose commented above it. With this entire script file,
+user keystrokes are able to be handled and subsequently processed,
+while also having the user's statistics update accordingly. WPM, 
+accuracy, word count, errors, etc. are recorded, and are displayed
+at the conclusion of each test. This file also contains event handlers
+for the user changing various settings (such as the timer and the
+type of test that they are taking, such as quotes or words). It 
+also provides a medium in which random quotes are generated
+using the quotable API, as well as random words selected from a fixed
+list of arbitrary words, enabling us to fill the content of our test.
+Additional functions can be analyzed within this file, each essentially
+contributing to the wholly purpose of contributing to the core functionality
+of TitanTypes, being able to handler user input, and acting accordingly.
 ============================================================= */
 
 // Constants

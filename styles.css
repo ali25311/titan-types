@@ -1,12 +1,22 @@
-/*
-==========================================================
+/* ==========================================================
 Authors: Stephen Landaas, Emily Le, Ali Hussain
-==========================================================
+=============================================================
 Licensing Information: MIT License
-==========================================================
-*/
+=============================================================
+Description: This file serves as the base styling for the primary/home
+page of TitanTypes. It contains styling for all facets of the initial
+page such as the header/navbar, main body/root styling, the testing
+module itself, the settings styling, the statistics styling, the styling
+of the completion modal, and styling for the actual test segment itself.
+Moreover, animations are included which are activated within our script, 
+to help the user see their current status through a blinking effect.
+Media queries are also utilized at the bottom of this file, enabling 
+the page to respond to different screen sizes, and adjusts certain 
+characteristics of the page accordingly, for a smoother user 
+interface and provides an overall responsive experience. 
+============================================================= */
 
-/* Creating variables for default colors for CSUF/Titan Types */
+/* Creating variables for default colors for CSUF/TitanTypes */
 :root {
   /* var(--main-blue); */
   --main-blue: #00274c;
