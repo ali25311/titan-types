@@ -1,10 +1,10 @@
-﻿// ==========================================================
-// Authors: Stephen Landaas, Emily Le, Ali Hussain
-// ==========================================================
-// Licensing Information: MIT License
-// ==========================================================
-// Description: This corresponds to test scenario 1, where we create unit tests to see if the functionality is correct with all the given test reults, regarding the Restart button. This is test case 2, it tests to see if the restart button is reloaded to the same values and new quotes appear in the text box.
-// ==========================================================
+﻿/* ==========================================================
+Authors: Stephen Landaas, Emily Le, Ali Hussain
+==========================================================
+Licensing Information: MIT License
+==========================================================
+Description: This corresponds to test scenario 1, where we create unit tests to see if the functionality is correct with all the given test reults, regarding the Restart button. This is test case 2, it tests to see if the restart button is reloaded to the same values and new quotes appear in the text box.
+========================================================== */
 
 function TestCase1_2() {
   //Opens the specified URL in a running instance of the specified browser.

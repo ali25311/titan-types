@@ -1,10 +1,10 @@
-﻿// ==========================================================
-// Authors: Stephen Landaas, Emily Le, Ali Hussain
-// ==========================================================
-// Licensing Information: MIT License
-// ==========================================================
-// Description: This corresponds to test scenario 1, where we create unit tests to see if the functionality is correct with all the given test reults, regarding the Restart button. This is test case 3, it tests to see if the restart button restarts an ongoing test in different timer selection scenarios (the default status should be restored).
-// ==========================================================
+﻿/* ==========================================================
+Authors: Stephen Landaas, Emily Le, Ali Hussain
+==========================================================
+Licensing Information: MIT License
+==========================================================
+Description: This corresponds to test scenario 1, where we create unit tests to see if the functionality is correct with all the given test reults, regarding the Restart button. This is test case 3, it tests to see if the restart button restarts an ongoing test in different timer selection scenarios (the default status should be restored).
+========================================================== */
 
 
 function TestCase1_3() {

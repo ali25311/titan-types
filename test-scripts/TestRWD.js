@@ -1,9 +1,10 @@
-// ==========================================================
-// Authors: Stephen Landaas, Emily Le, Ali Hussain
-// ==========================================================
-// Licensing Information: MIT License
-// ==========================================================
-// Description: This corresponds to test scenario 6, where we check to see if web application elements are static/present at smaller screen/browser widths, ensuring funtionality of media queries. This is test cases 1-6 merged together. Test case 1 is that we check to see if the initialized monitor size contains all elements (min-width: 1280px). Test case 2 was created so that we check to see if a nearly-full sized window contains all elements. Test case 3 is where we check to see if a medium-sized window contains all elements. Test case 4 is where we check to see if a small-sized window contains all elements. Test case 5 is where we check to see if a mobile-sized window contains all elements. Test case 6 is to check if an extra-small-sized window contains all elements.
+/* ==========================================================
+Authors: Stephen Landaas, Emily Le, Ali Hussain
+==========================================================
+Licensing Information: MIT License
+==========================================================
+Description: This corresponds to test scenario 6, where we check to see if web application elements are static/present at smaller screen/browser widths, ensuring funtionality of media queries. This is test cases 1-6 merged together. Test case 1 is that we check to see if the initialized monitor size contains all elements (min-width: 1280px). Test case 2 was created so that we check to see if a nearly-full sized window contains all elements. Test case 3 is where we check to see if a medium-sized window contains all elements. Test case 4 is where we check to see if a small-sized window contains all elements. Test case 5 is where we check to see if a mobile-sized window contains all elements. Test case 6 is to check if an extra-small-sized window contains all elements.
+========================================================== */
 
 function checkElements() {
   // Opens the specified URL in a running instance of the specified browser.
