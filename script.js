@@ -358,7 +358,8 @@ $(document).ready(function () {
 
     // Calculate the gross and net WPM using specific formulas
     grossWpm = Math.floor(Math.floor(characterCount / 5) / (minuteCount));
-    netWpm = Math.floor((grossWpm - errorCount) / minuteCount);
+
+    netWpm = Math.floor(grossWpm - Math.floor(errorCount / minuteCount)); 
 
     // Ensure that the gross WPM is a safe value
     if (isNaN(grossWpm) || grossWpm === Infinity || grossWpm == undefined 
