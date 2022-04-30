@@ -21,4 +21,4 @@ Your position will be recorded by a blinking line. Letters that you typed correc
 
 Once you have completed the test (the timer will countdown to 0), your test will finish, and then a pop-up window will display that will allow you to see how well you did on our test. This will show your cumulative statistics, such as your WPM, Words Typed, Characters Typed, Error Count, and Accuracy Percentage. Once you have examined your statistics, you can then exit out of this window and then the page will reload itself and you make continue retaking as many tests as you wish.
 
-***Please note that for executing any test scripts, you will need to utilize TestComplete and run the designated scripts in the Test Scripts folder***
+***Please note that for executing any test scripts, you will need to download and install TestComplete and run the designated scripts in the Test Scripts folder***
