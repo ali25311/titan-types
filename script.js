@@ -62,6 +62,7 @@ $(document).ready(function () {
   let segmentEl = $('#test-segment'); // The region where quotes/words go
   let timerEl = $('#timer-val'); // The timer element
   let wordCountEl = $('#word-count-val'); // The word count
+  let wpmEl = $('#wpm-val'); // The word count
   let accuracyEl = $('#accuracy-val'); // The accuracy percentage
   let testContent = ''; // String intermediary to store generated quotes/words
   let state = 'words'; // State of the match (quotes mode or words mode)
@@ -375,6 +376,31 @@ $(document).ready(function () {
 
     return netWpm;
 	}
+
+  function liveWpmCounter(currentSeconds) {
+		let grossWpm = 0; // The gross WPM
+    let netWpm = 0; // The net WPM (our final result)
+    let minuteCount = currentSeconds / 60; // # of Minutes
+
+    // Calculate the gross and net WPM using specific formulas
+    grossWpm = Math.floor(Math.floor(characterCount / 5) / (minuteCount));
+
+    netWpm = Math.floor(grossWpm - Math.floor(errorCount / minuteCount)); 
+
+    // Ensure that the gross WPM is a safe value
+    if (isNaN(grossWpm) || grossWpm === Infinity || grossWpm == undefined 
+        || grossWpm == null || grossWpm < 0) {
+      grossWpm = 0;
+    }
+
+    // Ensure that the net WPM is a safe value
+    if (netWpm < 0 || isNaN(netWpm) || netWpm === Infinity
+        || netWpm == undefined || netWpm == null) {
+      netWpm = 0;
+    }
+
+    return netWpm;
+	}
   
 	// Calculation for the accuracy of the user
 	function fetchAccuracy() {
@@ -418,6 +444,7 @@ $(document).ready(function () {
 		let interval = setInterval(function () {
 			if (secondsRemaining-- > 0) {
         // Update the timer every second
+        wpmEl.text(liveWpmCounter(secondsDuration - secondsRemaining))
         timerEl.text(secondsRemaining.toString());
 			} else if (secondsRemaining <= 0 && sessionEnded === false) {
         // End the session if it hasn't already ended, display the modal
@@ -476,6 +503,7 @@ $(document).ready(function () {
 
     // Set the text of our timer to be whatever the duration is of our test
     timerEl.text(secondsRemaining.toString());
+    wpmEl.text("0");
   }
   
   // Set up the session of the test upon loading of the document/page.
