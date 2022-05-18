@@ -63,14 +63,17 @@ $(document).ready(function () {
   let timerEl = $('#timer-val'); // The timer element
   let wordCountEl = $('#word-count-val'); // The word count
   let wpmEl = $('#wpm-val'); // The word count
+  //let highWpmEl = $('#high-wpm-val'); // The word count
   let accuracyEl = $('#accuracy-val'); // The accuracy percentage
   let testContent = ''; // String intermediary to store generated quotes/words
   let state = 'words'; // State of the match (quotes mode or words mode)
   let sessionStarted = false;
   let sessionEnded = false; // Track if the session is still going
-
+  let currentWpm = 0; // save current wpm
+  let highWpm = 0; // save highest WPM
   // MODAL VARIABLES
   let finalWpmEl = $('#final-wpm'); // WPM in status modal
+  let finalPreviousWpmEl = $('#final-previous-wpm'); // highest wpm
   let finalWordsTypedEl = $('#final-words-typed'); // Status modal word count
   let finalCharactersEl = $('#final-characters'); // Status modal char count
   let finalErrorsEl = $('#final-errors'); // Status modal error count
@@ -87,7 +90,15 @@ $(document).ready(function () {
 				return clean;
 			});
 	}
+  // Get the modal
+  var modal = document.getElementById('modal-overlay');
 
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
   // Returns a quote without hard-to-type characters (if present)
 	async function cleanQuote(inputQuote) {
     let quote = inputQuote; // Potential replacement quote
@@ -373,7 +384,7 @@ $(document).ready(function () {
         || netWpm == undefined || netWpm == null) {
       netWpm = 0;
     }
-
+    currentWpm = netWpm;
     return netWpm;
 	}
 
@@ -398,10 +409,31 @@ $(document).ready(function () {
         || netWpm == undefined || netWpm == null) {
       netWpm = 0;
     }
-
     return netWpm;
 	}
-  
+  var highest = localStorage.getItem("highest");
+  var current = localStorage.getItem("current");
+  function previousWpm(){
+
+    if (localStorage.getItem('highest') !== null &&
+      localStorage.getItem('current'))
+    {
+      highest = [];
+      localStorage.getItem('highest');
+      localStorage.getItem("current");
+      if(highest < current)
+      {
+        highest.push(current);
+      }
+      localStorage.setItem('highest', highWpm);
+      localStorage.setItem('current', currentWpm);
+    }
+    else
+    {
+      console.log("something wrong");
+    }
+    return highest;
+  }
 	// Calculation for the accuracy of the user
 	function fetchAccuracy() {
     // Calculate the ccuracy based off of a specific formula
@@ -425,13 +457,17 @@ $(document).ready(function () {
 		let accuracyPercent = fetchAccuracy();
     // Fetch the user's WPM
     let wpm = wpmCounter();
-    
+    // Fetch the user's previous WPM
+    let prev = previousWpm();
+    //console.log(high);
     // Update the statistics display with the proper word count and accuracy
     wordCountEl.text(wordCount.toString());
+    //highWpmEl.text(high.toString());
     accuracyEl.text(accuracyPercent.toString() + '%');
 
     // MODAL DISPLAY UPDATES...
     finalWpmEl.text('WPM: ' + wpm.toString());
+    finalPreviousWpmEl.text('Previous WPM: ' + prev);
     finalWordsTypedEl.text('Words Typed: ' + wordCount.toString());
     finalCharactersEl.text('Characters Typed: ' + characterCount.toString());
     finalErrorsEl.text('Errors: ' + errorCount.toString());
@@ -475,14 +511,12 @@ $(document).ready(function () {
     // Reload the page (refresh)
     window.location.reload();
   });
-
   // Function to prepare the session 
   // (integrate user's settings, prepare the test itself)
   function sessionSetup() {
     // Fetch both the state (quores or words) and duration from local storage
     state = localStorage.getItem('testType');
     secondsDuration = localStorage.getItem('timeVal');
-
     // Based off of the state of the match, render the corresponding input
     if (state === 'words') {
       renderWords();
@@ -496,7 +530,6 @@ $(document).ready(function () {
         secondsDuration === 111) {
       secondsDuration = 60;
     }
-    
     // Set the seconds remaining to be the duration of the test 
     // that the user specified
     secondsRemaining = secondsDuration;
@@ -505,7 +538,7 @@ $(document).ready(function () {
     timerEl.text(secondsRemaining.toString());
     wpmEl.text("0");
   }
-  
+
   // Set up the session of the test upon loading of the document/page.
   sessionSetup();
 });
