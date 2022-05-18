@@ -340,7 +340,7 @@ select {
   border-radius: 1em;
   font-family: "Lora", sans-serif;
   min-height: 25rem;
-  max-height: 25rem;
+  max-height: 50rem;
   width: 50%;
 }
 
